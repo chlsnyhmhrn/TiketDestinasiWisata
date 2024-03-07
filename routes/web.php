@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DaftarLokasiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\LoginController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\LoginController;
 //     return view('welcome');
 // });
 
+Route::get('/', [HomeController::class, 'home']);
 Route::get('/destinasi', [DestinasiController::class, 'Destinasi']);
 Route::get('/daftarlokasi', [DaftarLokasiController::class, 'daftarlokasi']);
 Route::get('/login', [LoginController::class, 'login']);
