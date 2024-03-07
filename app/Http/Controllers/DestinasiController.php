@@ -14,7 +14,7 @@ class DestinasiController extends Controller
         // ];
         // return view('destinasi')->with($data);
 
-        $nama = "Nobita";
+        $nama = "Sasuke";
         $pekerjaan = "Student";
         return view('destinasi', compact('nama', 'pekerjaan'));
     }
