@@ -8,15 +8,15 @@ class LoginController extends Controller
 {
     public function index()
     {
-       // $data = [
+        // $data = [
         //    'nama' => 'Doraemon',
-          //  'pekerjaan' => 'Developer',
-       // ];
-       // return view('login')->with($data);
-    
-       $nama = "Nobita";
-       $pekerjaan = "Student";
-       return view('login', compact('nama','pekerjaan'));
+        //  'pekerjaan' => 'Developer',
+        // ];
+        // return view('login')->with($data);
+
+        $nama = "Nobita";
+        $pekerjaan = "Student";
+        return view('login', compact('nama', 'pekerjaan'));
     }
 
     public function contact()
