@@ -46,5 +46,7 @@ Route::get('/', [BerandaController::class, 'index']);
 Route::get('/Detail', [DetailDestinasiContoller::class, 'index']);
 Route::get('/Kategori', [KategoriController::class, 'index']);
 Route::get('/Invoice', [InvoiceController::class, 'index']);
+Route::get('/riwayatTransaksi', [RiwayatTransaksiController::class, 'index']);
+Route::get('/orderanMasuk', [OrderanMasukController::class, 'index']);
 
-
+//27-4-2024 10:21pm
