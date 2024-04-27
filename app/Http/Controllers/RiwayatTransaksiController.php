@@ -10,6 +10,6 @@ class RiwayatTransaksiController extends Controller
     {
         // Logika untuk menampilkan riwayat transaksi
         // Misalnya:
-        return view('riwayat_transaksi');
+        return view('riwayatTransaksi');
     }
 }
