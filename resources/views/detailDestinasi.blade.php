@@ -105,7 +105,9 @@
                 </div>
               </div>
               <div class="card-actions mt-3">
-                <button class="w-full	btn btn-success text-white">Beli</button>
+                <a href="/Invoice" class="w-full	btn btn-success text-white">
+                  Beli
+                </a>
               </div>
             </div>
           </div>
