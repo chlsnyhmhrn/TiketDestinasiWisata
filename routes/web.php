@@ -42,6 +42,14 @@ Route::get('/Favorit', function () {
     return view('favorit');
 });
 
+Route::get('/orderanpenjual', function () {
+    return view('orderanMasuk');
+});
+
+Route::get('/riwayattransaksipenjual', function () {
+    return view('riwayatTransaksi');
+});
+
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/Detail', [DetailDestinasiContoller::class, 'index']);
 Route::get('/Kategori', [KategoriController::class, 'index']);
