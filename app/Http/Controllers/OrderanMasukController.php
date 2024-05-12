@@ -10,6 +10,6 @@ class OrderanMasukController extends Controller
     {
         // Logika untuk menampilkan orderan masuk
         // Misalnya:
-        return view('orderanMasuk');
+        return view('orderan_masuk');
     }
 }

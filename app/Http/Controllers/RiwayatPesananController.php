@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RiwayatTransaksiController extends Controller
+class RiwayatPesananController extends Controller
 {
     public function index()
     {
         // Logika untuk menampilkan riwayat transaksi
         // Misalnya:
-        return view('riwayatTransaksi');
+        return view('riwayat_pesanan');
     }
 }

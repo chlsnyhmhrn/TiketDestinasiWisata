@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class DetailDestinasiContoller extends Controller
 {
-    public function index(){
-        return view('detailDestinasi');
+    public function index()
+    {
+        return view('detail_destinasi');
     }
 }

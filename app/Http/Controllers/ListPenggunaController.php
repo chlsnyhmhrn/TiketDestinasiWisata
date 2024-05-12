@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class ListPenggunaController extends Controller
 {
-    public function index(){
-        return view('listPengguna');
+    public function index()
+    {
+        return view('list_pengguna');
     }
 }
