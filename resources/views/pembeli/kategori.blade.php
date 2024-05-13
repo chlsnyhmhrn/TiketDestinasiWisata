@@ -8,38 +8,8 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navbar bg-success">
-            <div class="navbar-start">
-                <a class="btn btn-ghost text-xl text-white">WonderWoo</a>
-            </div>
-            <div class="navbar-center">
-                <div class="form-control w-72">
-                    <input type="text" placeholder="Search" class="input input-bordered rounded-full input-sm w-full max-w-xs" />
-                </div>
-                <button class="btn btn-ghost btn-circle">
-                    <i class="bi bi-card-text font-semibold text-lg text-white"></i>
-                </button>
-            </div>
-            <div class="navbar-end">
-                <div class="dropdown dropdown-end">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <i class="text-2xl text-white bi bi-person-circle"></i>
-                    </div>
-                    <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a class="justify-between">
-                                Profile
-                                <span class="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('pembeli.navbar')
+
     <div class="container px-6 mx-auto">
         <div class="mt-10">
             <div class="flex justify-start w-full py-10">

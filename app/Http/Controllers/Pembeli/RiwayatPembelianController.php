@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pembeli;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -8,6 +10,6 @@ class RiwayatPembelianController extends Controller
 {
     public function index()
     {
-        return view('riwayat_pembelian');
+        return view('pembeli.riwayat_pembelian');
     }
 }

@@ -8,51 +8,13 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navbar bg-success">
-            <div class="navbar-start">
-                <a class="btn btn-ghost text-xl text-white">WonderWoo</a>
-            </div>
-            <div class="navbar-center">
-                <div class="form-control w-72">
-                    <input type="text" placeholder="Search"
-                        class="input input-bordered rounded-full input-sm w-full max-w-xs" />
-                </div>
-                <a href="/kategori">
-                    <button class="btn btn-ghost btn-circle">
-                        <i class="bi bi-card-text font-semibold text-lg text-white"></i>
-                    </button>
-                </a>
-            </div>
-            <div class="navbar-end">
-                <a href="/Favorit" class="btn btn-ghost btn-circle avatar">
-                    <i class="text-xl text-white bi bi-heart"></i>
-                </a>
-                <div class="dropdown dropdown-end">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <i class="text-2xl text-white bi bi-person-circle"></i>
-                    </div>
-                    <ul tabindex="0"
-                        class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a href="/edit_data" class="justify-between">
-                                Profile
-                            </a>
-                        </li>
-                        <li><a href="/riwayat_pembelian">Riwayat Pembelian</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('pembeli.navbar')
     <div class="container px-6 mx-auto">
         <div class="mt-28 lg:grid lg:grid-cols-4 gap-6">
             <div class="group relative">
                 <a href="/detail">
                     <div class="relative card bg-base-100 h-full shadow-xl group-hover:opacity-75">
-                        <figure class="max-h-48"><img class="h-full w-full object-cover object-center"
-                                src="{{ asset('img/1.jpg') }}" alt="Shoes" /></figure>
+                        <figure class="max-h-48"><img class="h-full w-full object-cover object-center" src="{{ asset('img/1.jpg') }}" alt="Shoes" /></figure>
                         <div class="card-body">
                             <div class="badge badge-outline badge-accent mt-1">Buka</div>
                             <h2 class="card-title line-clamp-2">Mega Wisata Ocarina, Batam</h2>
@@ -70,8 +32,7 @@
             </div>
             <div class="group relative">
                 <div class="relative card bg-base-100 h-full shadow-xl group-hover:opacity-75">
-                    <figure class="max-h-48"><img class="h-full w-full object-cover object-center"
-                            src="{{ asset('img/matakucing.png') }}" alt="Shoes" /></figure>
+                    <figure class="max-h-48"><img class="h-full w-full object-cover object-center" src="{{ asset('img/matakucing.png') }}" alt="Shoes" /></figure>
                     <div class="card-body">
                         <div class="badge badge-outline badge-accent mt-1">Buka</div>
                         <h2 class="card-title line-clamp-2">Hutan Wisata Bukit Mata Kucing</h2>
@@ -89,8 +50,7 @@
             </div>
             <div class="group relative">
                 <div class="relative card bg-base-100 h-full shadow-xl group-hover:opacity-75">
-                    <figure class="max-h-48"><img class="h-full w-full object-cover object-center"
-                            src="{{ asset('img/kebunraya.png') }}" alt="Shoes" /></figure>
+                    <figure class="max-h-48"><img class="h-full w-full object-cover object-center" src="{{ asset('img/kebunraya.png') }}" alt="Shoes" /></figure>
                     <div class="card-body">
                         <div class="badge badge-outline badge-error mt-1">Tutup</div>
                         <h2 class="card-title line-clamp-2">Kebun Raya Batam</h2>
@@ -108,8 +68,7 @@
             </div>
             <div class="group relative">
                 <div class="relative card bg-base-100 h-full shadow-xl group-hover:opacity-75">
-                    <figure class="max-h-48"><img class="h-full w-full object-cover object-center"
-                            src="{{ asset('img/kampungviet.png') }}" alt="Shoes" /></figure>
+                    <figure class="max-h-48"><img class="h-full w-full object-cover object-center" src="{{ asset('img/kampungviet.png') }}" alt="Shoes" /></figure>
                     <div class="card-body">
                         <div class="badge badge-outline badge-accent mt-1">Buka</div>
                         <h2 class="card-title line-clamp-2">Kampung Vietnam</h2>

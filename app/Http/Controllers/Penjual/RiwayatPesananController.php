@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Penjual;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RiwayatPesananController extends Controller
 {
@@ -10,6 +10,6 @@ class RiwayatPesananController extends Controller
     {
         // Logika untuk menampilkan riwayat transaksi
         // Misalnya:
-        return view('riwayat_pesanan');
+        return view('penjual.riwayat_pesanan');
     }
 }
