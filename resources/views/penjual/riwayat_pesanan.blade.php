@@ -10,35 +10,7 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navbar bg-success">
-            <div class="flex-1">
-                <a class="btn btn-ghost text-xl text-white">WonderWoo</a>
-            </div>
-            <div class="flex-none gap-2">
-                <div class="form-control">
-                    <input type="text" placeholder="Search" class="input input-bordered input-sm w-full max-w-xs" />
-                </div>
-                <div class="dropdown dropdown-end">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <i class="text-2xl text-white bi bi-person-circle"></i>
-                    </div>
-                    <ul tabindex="0"
-                        class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a href="/edit_data" class="justify-between">
-                                Profile
-                                <span class="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    @include('penjual.navbar_penjual')
     <div class="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
@@ -72,41 +44,51 @@
                     </div>
                 </div>
             </div>
-            <!-- end card produk -->
         </div>
-        <div class="drawer-side">
-            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-            <div class="menu p-4 w-64 min-h-full bg-success text-white">
-                <!-- Sidebar content here -->
-                <!-- <div class="flex flex-wrap mb-4">
-                    <i class="bi bi-person-gear text-6xl text-warning"></i>
-                    <div class="flex flex-col mt-2 ml-4">
-                        <a href="#" class="font-bold text-2xl">Seller_01</a>
-                        <span class="font-semibold text-lg">Penjual</span>
+        <!-- end card produk -->
+        <!-- Start sideBar Menu -->
+            <div class="drawer-side ">
+                <aside class="w-full h-screen overflow-hidden md:w-64 bg-success  text-white">
+                    <div class="flex flex-wrap ml-3 mt-2">
+                        <i class="bi bi-person-gear text-6xl text-warning"></i>
+                        <div class="flex flex-col mt-2 ml-4">
+                            <a href="#" class="font-bold text-2xl">Seller_01</a>
+                            <span class="font-semibold text-lg">Penjual</span>
+                        </div>
                     </div>
-                </div> -->
-                <span class="font-bold text-2xl mt-8 mx-auto h-20">DAFTAR MENU</span>
-                <div class="ml-4">
-                    <div class="flex mb-6">
-                        <i class="bi bi-border-all text-warning text-3xl"></i>
-                        <span class="font-semibold text-xl mt-1 ml-2"><a href="#">Dashboard</a></span>
-                    </div>
-                    <div class="flex mb-6">
-                        <i class="bi bi-building-down text-warning text-3xl"></i>
-                        <span class="font-semibold text-xl mt-1 ml-2"><a href="/orderan_masuk">Orderan Masuk</a></span>
-                    </div>
-                    <div class="flex mb-6">
-                        <i class="bi bi-building-fill-check text-warning text-3xl "></i>
-                        <span class="font-semibold text-xl mt-1 ml-2"><a href="#">Riwayat Pesanan</a></span>
-                    </div>
-                    <div class="flex">
-                        <i class="bi bi-clock-history text-warning text-3xl"></i>
-                        <span class="font-semibold text-xl mt-1 ml-2"><a href="#">Riwayat Transaksi</a></span>
-                    </div>
-                </div>
-
+                    <ul class="py-4 md:py-0 text-center mt-8 md:overflow-y-auto">
+                        <li>
+                            <span class="text-3xl font-bold">DAFTAR MENU</span>
+                        </li>
+                        <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
+                            <div class="flex items-center">
+                                <i class="bi bi-border-all text-warning text-3xl"></i>
+                                <a href="/dashboard" class="ml-4 text-xl">Dashboard</a>
+                            </div>
+                        </li>
+                        <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="bi bi-building-down text-warning text-3xl"></i>
+                                <a href="/orderan_masuk" class="ml-4 text-xl">Orderan Masuk</a>
+                            </div>
+                        </li>
+                        <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="bi bi-building-fill-check text-warning text-3xl "></i>
+                                <a href="#" class="ml-4 text-xl">Riwayat Pesanan</a>
+                            </div>
+                        </li>
+                        <li class="block px-4 py-2 hover:bg-stone-70 hover:cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="bi bi-clock-history text-warning text-3xl"></i>
+                                <a href="#" class="ml-4 text-xl">Riwayat Transaksi</a>
+                            </div>
+                        </li>
+                    </ul>
+                </aside>
             </div>
-        </div>
+        <!-- end SideBar Menu -->
+    </div>
 
 </body>
 
