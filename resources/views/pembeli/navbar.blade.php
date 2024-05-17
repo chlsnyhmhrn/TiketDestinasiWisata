@@ -1,7 +1,7 @@
 <nav>
     <div class="navbar bg-success">
         <div class="navbar-start">
-            <a class="btn btn-ghost text-xl text-white">WonderWoo</a>
+            <a href="/" class="btn btn-ghost text-xl text-white">WonderWoo</a>
         </div>
         <div class="navbar-center">
             <div class="form-control w-72">
@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="navbar-end">
-            <a href="/Favorit" class="btn btn-ghost btn-circle avatar">
+            <a href="/favorit" class="btn btn-ghost btn-circle avatar">
                 <i class="text-xl text-white bi bi-heart"></i>
             </a>
             <div class="dropdown dropdown-end">

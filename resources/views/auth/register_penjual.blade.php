@@ -9,23 +9,21 @@
 </head>
 
 <body class="bg-success flex justify-center items-center h-screen">
-    <div class="bg-white p-8 rounded-2xl shadow-md w-120">
+    <div class="bg-white p-8 rounded-2xl shadow-md w-96">
         <h2 class="text-2xl font-bold text-center mb-8">Buat Akun Gratis</h2>
-        <div class="flex items-center mb-4">
-            <div class="w-1/2 mr-2">
-                <button type="button" id="penjual" name="rolepenjual"
-                    class="w-full px-2 py-2 border rounded-md focus:outline-none focus:border-green-500 bg-success text-white">Daftar
-                    Sebagai Penjual</button>
+        <div class="flex gap-2 items-center mb-4">
+            <div class="w-full">
+                <a href="/register_pembeli"><button type="button" id="pembeli" name="rolepembeli"
+                        class="w-full px-2 py-2 border rounded-md focus:outline-none focus:border-green-500">Pembeli</button></a>
             </div>
-            <div class="w-1/2 ml-2">
-                <a href="/registerPembeli"><button type="button" id="pembeli" name="rolepembeli"
-                        class="w-full px-2 py-2 border rounded-md focus:outline-none focus:border-green-500">Daftar
-                        Sebagai Pembeli</button></a>
+            <div class="w-full">
+                <button type="button" id="penjual" name="rolepenjual"
+                    class="w-full px-2 py-2 border rounded-md focus:outline-none focus:border-green-500 bg-success text-white">Penjual</button>
             </div>
         </div>
         <form id="registrationForm">
             <div class="mb-4" id="storeNameInput">
-                <label for="storeName" class="font-bold block mb-2">Nama Toko</label>
+                <label for="storeName" class="font-bold block mb-2">Username</label>
                 <input type="text" id="storeName" name="storeName"
                     class="bg-gray-300 w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:border-green-500">
             </div>
@@ -33,18 +31,6 @@
                 <label for="email" class="font-bold block mb-2">Email</label>
                 <input type="email" id="email" name="email"
                     class="bg-gray-300 w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:border-green-500">
-            </div>
-            <div class="flex items-center mb-4">
-                <div class="w-1/2 mr-2">
-                    <label for="firstName" class="font-bold block mb-2">Nama Depan</label>
-                    <input type="text" id="firstName" name="firstName"
-                        class="bg-gray-300 w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:border-green-500">
-                </div>
-                <div class="w-1/2 ml-2">
-                    <label for="lastName" class="font-bold block mb-2">Nama Belakang</label>
-                    <input type="text" id="lastName" name="lastName"
-                        class="bg-gray-300 w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:border-green-500">
-                </div>
             </div>
             <div class="mb-4">
                 <label for="password" class="font-bold block mb-2">Password</label>
@@ -59,5 +45,4 @@
         <p class="px-4 py-2">Sudah punya akun? <a href="/masuk" class="font-bold text-green-900">Masuk</a></p>
     </div>
 </body>
-
 </html>
