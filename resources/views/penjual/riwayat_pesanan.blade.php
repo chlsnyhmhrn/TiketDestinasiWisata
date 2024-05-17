@@ -63,7 +63,7 @@
                         <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
                             <div class="flex items-center">
                                 <i class="bi bi-border-all text-warning text-3xl"></i>
-                                <a href="/dashboard" class="ml-4 text-xl">Dashboard</a>
+                                <a href="/penjual/dashboard" class="ml-4 text-xl">Dashboard</a>
                             </div>
                         </li>
                         <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
