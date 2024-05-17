@@ -3,6 +3,12 @@
 use App\Http\Controllers\Admin\ListPenggunaController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MasukController;
+use App\Http\Controllers\DaftarLokasiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegisterPenjualController;
+use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\Pembeli\BerandaController;
 use App\Http\Controllers\Pembeli\DetailDestinasiContoller;
 use App\Http\Controllers\Pembeli\EditDataDiriController;
