@@ -52,7 +52,7 @@
         <!-- End Sidebar -->
         <!-- Content -->
         <div class="flex-1">
-            <div class="p-8 bg-white w-full md:w-auto mt-4 md:mt-0 md:ml-4 rounded-xl">
+            <div class="p-8 bg-white lg:w-fit lg:mt-6 md:w-auto mb-8 md:mt-0 md:ml-4 rounded-xl">
                 <h1 class="text-4xl">Selamat Datang <span class="font-bold">Seller_01</span></h1>
             </div>
             <div class="flex flex-wrap justify-center md:justify-start">
@@ -60,17 +60,17 @@
                 <div class="flex flex-col p-4 items-center bg-white w-full md:w-80 mt-4 md:mt-0 md:ml-4 rounded-lg shadow-md">
                     <span class="my-2 text-3xl text-warning">999</span>
                     <span class="my-2 text-xl">Orderan Masuk</span>
-                    <button class="btn btn-primary btn-sm my-2 w-44 text-white bi bi-pencil-square">Aksi</button>
+                    <button class="btn btn-success btn-sm my-2 w-44 text-white bi bi-pencil-square">Aksi</button>
                 </div>
                 <div class="flex flex-col p-4 items-center bg-white w-full md:w-80 mt-4 md:mt-0 md:ml-4 rounded-lg shadow-md">
                     <span class="my-2 text-3xl text-warning">999</span>
                     <span class="my-2 text-xl">Riwayat Pesanan</span>
-                    <button class="btn btn-primary btn-sm my-2 w-44 text-white bi bi-pencil-square">Aksi</button>
+                    <button class="btn btn-success btn-sm my-2 w-44 text-white bi bi-pencil-square">Aksi</button>
                 </div>
                 <div class="flex flex-col p-4 items-center bg-white w-full md:w-80 mt-4 md:mt-0 md:ml-4 rounded-lg shadow-md">
                     <span class="my-2 text-3xl text-warning">Rp. 999.000-</span>
                     <span class="my-2 text-xl">Total Pemasukan</span>
-                    <button class="btn btn-primary btn-sm my-2 w-44 text-white bi bi-pencil-square">Aksi</button>
+                    <button class="btn btn-success btn-sm my-2 w-44 text-white bi bi-pencil-square">Aksi</button>
                 </div>
                 <!--end card item-->
             </div>
