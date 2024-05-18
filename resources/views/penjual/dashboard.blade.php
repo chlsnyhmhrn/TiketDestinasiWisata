@@ -55,7 +55,7 @@
             <div class="p-8 bg-white lg:w-fit lg:mt-6 md:w-auto mb-8 md:mt-0 md:ml-4 rounded-xl">
                 <h1 class="text-4xl">Selamat Datang <span class="font-bold">Seller_01</span></h1>
             </div>
-            <div class="flex flex-wrap justify-center md:justify-start">
+            <div class="flex flex-wrap justify-center md:justify-start py-5">
                 <!--card item-->
                 <div class="flex flex-col p-4 items-center bg-white w-full md:w-80 mt-4 md:mt-0 md:ml-4 rounded-lg shadow-md">
                     <span class="my-2 text-3xl text-warning">999</span>
