@@ -28,6 +28,7 @@ Route::get('/masuk', [AuthController::class, 'index']);
 Route::post('/actionLogin', [AuthController::class, 'actionLogin'])->name('actionLogin');
 
 Route::get('/register_penjual', [AuthController::class, 'registrasiPenjual']);
+Route::get('/input_destinasi', [AuthController::class, 'inputDestinasi']);
 Route::get('/register_pembeli', [AuthController::class, 'registrasiPembeli']);
 Route::post('/register/action', [AuthController::class, 'actionRegister'])->name('actionRegister');
 
@@ -42,5 +43,6 @@ Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/penjual/dashboard', [DashboardController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
 Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
+
 
 //27-4-2024 10:21pm

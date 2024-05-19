@@ -36,6 +36,11 @@ class AuthController extends Controller
         return view('auth.register_penjual');
     }
 
+    public function inputDestinasi()
+    {
+        return view('auth.input_destinasi');
+    }
+
     public function registrasiPembeli()
     {
         return view('auth.register_pembeli');

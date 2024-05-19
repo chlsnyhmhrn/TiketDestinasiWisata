@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-success flex justify-center items-center h-screen">
+<body class="bg-success flex justify-center items-center min-h-screen">
     <div class="bg-white p-8 rounded-2xl shadow-md w-120">
         <h2 class="text-2xl font-bold text-center mb-8">Selamat Datang Di Wonderwoo</h2>
         @if (session('message'))
