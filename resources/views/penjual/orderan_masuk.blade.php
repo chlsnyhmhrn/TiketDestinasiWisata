@@ -154,7 +154,7 @@
                     <div class="flex flex-wrap ml-3 mt-2">
                         <i class="bi bi-person-gear text-6xl text-warning"></i>
                         <div class="flex flex-col mt-2 ml-4">
-                            <a href="#" class="font-bold text-2xl">Seller_01</a>
+                            <a href="/edit_data" class="font-bold text-2xl">Seller_01</a>
                             <span class="font-semibold text-lg">Penjual</span>
                         </div>
                     </div>
@@ -170,6 +170,12 @@
                         </li>
                         <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                             <div class="flex items-center">
+                                <i class="bi bi-tags text-warning text-3xl"></i>
+                                <a href="/penjual/detail_produk" class="ml-4 text-xl">Detail Produk</a>
+                            </div>
+                        </li>
+                        <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
+                            <div class="flex items-center">
                                 <i class="bi bi-building-down text-warning text-3xl"></i>
                                 <a href="#" class="ml-4 text-xl">Orderan Masuk</a>
                             </div>
@@ -177,13 +183,13 @@
                         <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                             <div class="flex items-center">
                                 <i class="bi bi-building-fill-check text-warning text-3xl "></i>
-                                <a href="/riwayat_pesanan" class="ml-4 text-xl">Riwayat Pesanan</a>
+                                <a href="/penjual/riwayat_pesanan" class="ml-4 text-xl">Riwayat Pesanan</a>
                             </div>
                         </li>
-                        <li class="block px-4 py-2 hover:bg-stone-70 hover:cursor-pointer">
+                        <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                             <div class="flex items-center">
                                 <i class="bi bi-clock-history text-warning text-3xl"></i>
-                                <a href="#" class="ml-4 text-xl">Riwayat Transaksi</a>
+                                <a href="/penjual/riwayat_transaksi" class="ml-4 text-xl">Riwayat Transaksi</a>
                             </div>
                         </li>
                     </ul>

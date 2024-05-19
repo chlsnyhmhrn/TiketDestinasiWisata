@@ -13,6 +13,8 @@ use App\Http\Controllers\Pembeli\RiwayatPembelianController;
 use App\Http\Controllers\penjual\DashboardController;
 use App\Http\Controllers\Penjual\OrderanMasukController;
 use App\Http\Controllers\Penjual\RiwayatPesananController;
+use App\Http\Controllers\Penjual\RiwayatTransaksiController;
+use App\Http\Controllers\Penjual\DetailProdukController;
 
 
 Route::get('/welcome', function () {
@@ -33,10 +35,12 @@ Route::get('/favorit', [FavoritController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/invoice', [InvoiceController::class, 'index']);
 Route::get('/edit_data', [EditDataDiriController::class, 'index']);
-Route::get('/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
 Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
-Route::get('/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
+Route::get('/penjual/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
+Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/penjual/dashboard', [DashboardController::class, 'index']);
+Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
+Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
 
 //27-4-2024 10:21pm
