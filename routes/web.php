@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ListPenggunaController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Pembeli\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pembeli\BerandaController;
 use App\Http\Controllers\Pembeli\DetailDestinasiContoller;
@@ -33,6 +34,7 @@ Route::get('/register_pembeli', [AuthController::class, 'registrasiPembeli']);
 Route::post('/register/action', [AuthController::class, 'actionRegister'])->name('actionRegister');
 
 Route::get('/favorit', [FavoritController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/invoice', [InvoiceController::class, 'index']);
 Route::get('/edit_data', [EditDataDiriController::class, 'index']);
