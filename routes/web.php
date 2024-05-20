@@ -16,6 +16,8 @@ use App\Http\Controllers\Penjual\OrderanMasukController;
 use App\Http\Controllers\Penjual\RiwayatPesananController;
 use App\Http\Controllers\Penjual\RiwayatTransaksiController;
 use App\Http\Controllers\Penjual\DetailProdukController;
+use App\Http\Controllers\Admin\DashboardAdminController;
+
 
 
 Route::get('/welcome', function () {
@@ -45,6 +47,9 @@ Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/penjual/dashboard', [DashboardController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
 Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
+
+Route::get('/admin/dashboard_admin', [DashboardAdminController::class, 'index']);
+
 
 
 //27-4-2024 10:21pm

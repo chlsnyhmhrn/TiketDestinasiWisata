@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Destinasi</title>
     @vite('resources/css/app.css')
-
+       
 </head>
 <body class="bg-success flex justify-center items-center min-h-screen">
     <div class="bg-white p-8 rounded-2xl shadow-md w-96 ">
@@ -14,6 +14,10 @@
         <div class="flex items-center mb-4">
         </div>
         <form id="addProdukForm">
+        <div class="mb-4" id="namaDestinasiInput">
+                <label for="namaDestinasi" class=" block mb-2">Foto Destinasi</label>
+                <input type="file" class="file-input file-input-success w-full max-w-xs" />
+            </div>
             <div class="mb-4" id="namaDestinasiInput">
                 <label for="namaDestinasi" class=" block mb-2">Nama Destinasi</label>
                 <input type="text" id="namaDestinasi" name="namaDestinasi"
