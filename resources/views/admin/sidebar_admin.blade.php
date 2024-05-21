@@ -9,36 +9,36 @@
         </div>
         <ul class="py-4 md:py-0 text-center mt-8 md:overflow-y-auto">
             <li>
-                <span class="text-3xl font-bold">DAFTAR MENU</span>
+                <span class="text-xl font-bold">DAFTAR MENU</span>
             </li>
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
                 <div class="flex items-center">
-                    <i class="bi bi-house-door-fill text-warning text-3xl"></i>
-                    <a href="#" class="ml-4 text-xl">Dashboard</a>
+                    <i class="bi bi-house-door-fill text-warning text-xl"></i>
+                    <a href="#" class="ml-4 text-l">Dashboard</a>
                 </div>
             </li>
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                 <div class="flex items-center">
-                    <i class="bi bi-person-lines-fill text-warning text-3xl"></i>
-                    <a href="/" class="ml-4 text-xl">Akun Pengguna</a>
+                    <i class="bi bi-person-lines-fill text-warning text-xl"></i>
+                    <a href="/" class="ml-4 text-l">Akun Pengguna</a>
                 </div>
             </li> 
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                 <div class="flex items-center">
-                    <i class="bi bi-pin-map text-warning text-3xl"></i>
-                    <a href="/" class="ml-4 text-xl">Destinasi Wisata</a>
+                    <i class="bi bi-pin-map text-warning text-xl"></i>
+                    <a href="/" class="ml-4 text-l">Destinasi Wisata</a>
                 </div>
             </li>
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                 <div class="flex items-center">
-                    <i class="bi bi-ticket-detailed-fill text-warning text-3xl "></i>
-                    <a href="/" class="ml-4 text-xl">Tiket Wisata</a>
+                    <i class="bi bi-ticket-detailed-fill text-warning text-xl "></i>
+                    <a href="/" class="ml-4 text-l">Tiket Wisata</a>
                 </div>
             </li>
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                 <div class="flex items-center">
-                    <i class="bi bi-clock-history text-warning text-3xl"></i>
-                    <a href="/" class="ml-4 text-xl">Riwayat Transaksi</a>
+                    <i class="bi bi-clock-history text-warning text-xl"></i>
+                    <a href="/" class="ml-4 text-l">Riwayat Transaksi</a>
                 </div>
             </li>
         </ul>

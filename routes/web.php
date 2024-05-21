@@ -17,6 +17,8 @@ use App\Http\Controllers\Penjual\RiwayatPesananController;
 use App\Http\Controllers\Penjual\RiwayatTransaksiController;
 use App\Http\Controllers\Penjual\DetailProdukController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\ListDestinasiController;
+use App\Http\Controllers\Admin\ListTiketController;
 
 
 
@@ -49,7 +51,8 @@ Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'in
 Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
 
 Route::get('/admin/dashboard_admin', [DashboardAdminController::class, 'index']);
-
+Route::get('/admin/list_destinasi', [ListDestinasiController::class, 'index']);
+Route::get('/admin/list_tiket', [ListTiketController::class, 'index']);
 
 
 //27-4-2024 10:21pm
