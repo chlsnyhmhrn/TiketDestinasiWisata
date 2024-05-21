@@ -7,7 +7,8 @@
                 <span class="font-semibold text-lg">Administrator</span>
             </div>
         </div>
-        <ul class="py-4 md:py-0 text-center mt-8 md:overflow-y-auto">
+        <hr>
+        <ul class="py-2 md:py-0 text-center mt-8 md:overflow-y-auto">
             <li>
                 <span class="text-xl font-bold">DAFTAR MENU</span>
             </li>
