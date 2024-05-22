@@ -27,7 +27,6 @@
                     <th>Status</th>
                     <th>Jam Buka</th>
                     <th>Jam Tutup</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,14 +39,6 @@
                     <td>Buka</td>
                     <td>08:00</td>
                     <td>17:00</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-error btn-xs">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -58,14 +49,6 @@
                     <td>Buka</td>
                     <td>07:00</td>
                     <td>17:00</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-error btn-xs">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -76,14 +59,6 @@
                     <td>Buka</td>
                     <td>08:00</td>
                     <td>21:00</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-error btn-xs">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </td>
                 </tr>
                 <!-- Tambahkan lebih banyak data destinasi sesuai kebutuhan -->
             </tbody>

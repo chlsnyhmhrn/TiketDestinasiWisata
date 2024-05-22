@@ -27,7 +27,6 @@
                     <th>Total Harga</th>
                     <th>Tanggal Pesanan</th>
                     <th>Tanggal Kunjungan</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,14 +39,6 @@
                     <td>90000</td>
                     <td>2024-05-15</td>
                     <td>2024-05-21</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-error btn-xs">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -58,14 +49,6 @@
                     <td>50000</td>
                     <td>2024-04-30</td>
                     <td>2024-05-13</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-error btn-xs">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -76,14 +59,6 @@
                     <td>180000</td>
                     <td>2024-05-12</td>
                     <td>2024-05-13</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button class="btn btn-error btn-xs">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                    </td>
                 </tr>
                 <!-- Tambahkan lebih banyak data destinasi sesuai kebutuhan -->
             </tbody>
