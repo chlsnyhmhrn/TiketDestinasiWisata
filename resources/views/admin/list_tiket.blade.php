@@ -60,7 +60,7 @@
                     <td>2024-05-12</td>
                     <td>2024-05-13</td>
                 </tr>
-                <!-- Tambahkan lebih banyak data destinasi sesuai kebutuhan -->
+                <!-- Tambahkan sesuai kebutuhan -->
             </tbody>
         </table>
     </div>

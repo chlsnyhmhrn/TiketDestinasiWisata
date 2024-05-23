@@ -13,11 +13,13 @@
         @include('penjual.navbar_penjual')
         <div class="flex flex-col md:flex-row bg-gray-100">
             @include('penjual.sidebar_penjual')
-            <div class="flex flex-col w-4/5">
-                <p class="text-2xl font-bold mt-4 mx-4">Orderan Masuk</p>
-                <!-- star card produk -->
-                <div class="max-w-4xl flex flex-col mt-9 ml-16 ">
-                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 max-w-3xl ">
+            <div class="flex flex-col w-full px-8 py-10">
+
+                <div class="max-w-full flex flex-col gap-5">
+
+                    <p class="text-2xl font-bold mt-4 mx-4">Orderan Masuk</p>
+
+                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 w-full ">
                         <div class="flex flex-col">
                             <div class="flex">
                                 <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
@@ -56,11 +58,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- end card produk -->
-                <!-- star card produk -->
-                <div class="max-w-4xl flex flex-col mt-9 ml-16 ">
-                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 max-w-3xl ">
+                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 w-full ">
                         <div class="flex flex-col">
                             <div class="flex">
                                 <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
@@ -99,11 +97,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- end card produk -->
-                <!-- star card produk -->
-                <div class="max-w-4xl flex flex-col mt-9 ml-16 ">
-                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 max-w-3xl ">
+                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 w-full ">
                         <div class="flex flex-col">
                             <div class="flex">
                                 <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
@@ -142,8 +136,8 @@
                             </div>
                         </div>
                     </div>
+                        <!-- Tambahkan sesuai kebutuhan -->
                 </div>
-                <!-- end card produk -->
             </div>
         </div>
     </body>

@@ -9,7 +9,7 @@
 </head>
 <body>
     @include('penjual.navbar_penjual')
-    <div class="flex flex-col md:flex-row h-screen bg-gray-100">
+    <div class="flex flex-col md:flex-row min-h-screen max-w-full bg-gray-100">
         @include('penjual.sidebar_penjual')
         <!-- Content -->
         <div class="flex-1">
@@ -29,7 +29,7 @@
                 </div>
                 <!--end card item-->
             </div>
-            <table class="ml-4 w-[900px] border-collapse">
+            <table class="ml-4 w-full border-collapse max-w-full">
                 <thead>
                     <tr class="bg-warning border-b-2 border-gray-300 text-lg">
                         <th class="p-2">ID User</th>
@@ -40,9 +40,9 @@
                         <th class="p-2 ">Total Harga</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-white text-md text-center border-b border-gray-300 h-10">
                     {{-- row 1 --}}
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-white text-md text-center border-b border-gray-300 h-10">
+                    <tr>
                         <td class="">101</td>
                         <td class="">2</td>
                         <td class="">TK001</td>
@@ -86,6 +86,15 @@
                         <td class="">30-Januari-2024</td>
                         <td class="text-red-500 hover:text-white">Rp. 80.000</td>
                     </tr>
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-white text-md text-center border-b border-gray-300 h-10">
+                        <td class="">101</td>
+                        <td class="">2</td>
+                        <td class="">TK001</td>
+                        <td class="">27-Januari-2024</td>
+                        <td class="">30-Januari-2024</td>
+                        <td class="text-red-500 hover:text-white">Rp. 80.000</td>
+                    </tr>
+                        <!-- Tambahkan sesuai kebutuhan -->
                 </tbody>
             </table>
         </div>
