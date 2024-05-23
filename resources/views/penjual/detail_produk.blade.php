@@ -9,109 +9,71 @@
 </head>
 <body style="background-color: #E7ECF1">
     @include('penjual.navbar_penjual')
-</div>
-<div class="drawer lg:drawer-open">
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col">
-        <!-- Page content here -->
-        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+    <div class="flex flex-col md:flex-row bg-gray-100">
+        @include('penjual.sidebar_penjual')
         <!-- Content -->
-        <div class="flex-1">
-            <div class="flex w-full my-2 items-center justify-around">
-                <p class="text-2xl font-bold mt-4 mx-4 flex-grow">Detail Produk</p>
-                <button class="btn btn-sm bg-success w-32 rounded-xl text-white hover:text-white hover:bg-primary mt-6 mr-24">Edit</button>
+        <div class="flex-1 w-4/5 p-4 mt-0">
+            <div class="flex flex-wrap h-10 items-center justify-between">
+                <p class="text-xl font-bold mt-4">Detail Produk</p>
+                <button class="btn btn-md bg-success rounded-xl text-white hover:text-white hover:bg-primary mt-4">Edit</button>
             </div>
-            <div class="flex flex-wrap justify-center w-[100%] md:justify-start py-5">
-                <!--card item-->
-                <div class="flex ml-12 gap-1">
-                    <div>
-                        <img src="{{ asset('img/megaocarina.jpg') }}" alt="costarina" class="h-72 w-[720px] rounded-lg">
+            <div class="flex flex-wrap justify-center lg:justify-start py-5">
+                <!-- image Card item -->
+                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                    <div class="group relative">
+                    <div
+                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                        <img src="../img/megaocarina.jpg"
+                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                        class="h-full w-full object-cover object-center">
                     </div>
-                    <div class="flex flex-wrap gap-1">
-                        <img src="{{ asset('img/1.jpg') }}" alt="costarina" class="w-48 h-36 rounded-lg">
-                        <img src="{{ asset('img/2.jpg') }}" alt="costarina" class="w-48 h-36 rounded-lg">
-                        <img src="{{ asset('img/2.jpg') }}" alt="costarina" class="w-48 h-36 rounded-lg">
-                        <img src="{{ asset('img/1.jpg') }}" alt="costarina" class="w-48 h-36 rounded-lg">
+                    </div>
+                    <div class="group relative">
+                    <div
+                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                        <img src="../img/2.jpg"
+                        alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                    </div>
+                    <div class="group relative">
+                    <div
+                        class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                        <img src="../img/3.jpg" alt="Collection of four insulated travel bottles on wooden shelf."
+                        class="h-full w-full object-cover object-center">
+                    </div>
                     </div>
                 </div>
-                <!--end card item-->
-                {{-- deskripsi --}}
-                <div class="flex flex-col">
-                    <h1 class="ml-12 mt-6 font-bold text-xl capitalize">mega wisata ocarina, batam</h1>
-                    <div class="flex mt-1 ml-14">
+                <!-- End card item -->
+                <!-- Description -->
+                <div class="flex flex-col lg:ml-8 mt-6">
+                    <h1 class="font-bold text-l capitalize">Mega Wisata Ocarina, Batam</h1>
+                    <div class="flex items-center mt-2">
                         <i class="bi bi-geo-alt text-warning"></i>
-                        <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
+                        <p class="ml-2">Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
                     </div>
-                    <p class="ml-12 w-1/2 mt-2 capitalize bg-gray-300 p-2 rounded-md">
+                    <p class="mt-4 bg-gray-300 text-md p-4 rounded-md">
                         Nikmati liburan tak terlupakan di Mega Wisata Ocarina, Batam. Dengan wahana-wahana menarik dan hiburan yang mengasyikkan, kami adalah destinasi yang sempurna untuk semua orang yang mencari kesenangan dan petualangan. Dari perjalanan menegangkan di wahana permainan hingga kegiatan santai di taman bermain, kami menawarkan pengalaman liburan yang memikat hati untuk semua anggota keluarga. Dapatkan tiket Anda sekarang dan buatlah kenangan indah di Mega Wisata Ocarina!
                     </p>
-                    <div class="price flex ml-12 mt-4 ">
-                        <div class="flex flex-col my-2 bg-white w-[200px] rounded-xl p-4 shadow-md">
-                            <span class="font-bold text-xl">Harga Tiket</span>
-                            <span class="font-semibold">Dewasa : </span>
+                    <div class="flex flex-wrap gap-6 mt-6">
+                        <div class="flex flex-col bg-white w-full md:w-auto p-4 rounded-xl shadow-md">
+                            <span class="font-bold text-lg">Harga Tiket</span>
+                            <span class="font-semibold ">Dewasa:</span>
                             <span class="text-red-500">Rp. 40.000</span>
-                            <span class="font-semibold">Anak - Anak : </span>
+                            <span class="font-semibold">Anak - Anak:</span>
                             <span class="text-red-500">Rp. 25.000</span>
                         </div>
-                        <div class="flex flex-col ml-6 my-6">
-                            <span class="font-bold text-xl mb-1">Jam Operasional</span>
-                            <span class="mb-2">Senin - Jumat :08.00 - 22.00</span>
-                            <span class="mb-2">Sabtu :08.00 - 23.00</span>
-                            <span>Minggu :06.00 - 23.00</span>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-lg mt-3 mb-1">Jam Operasional</span>
+                            <span class="mb-2">Senin - Jumat: 08.00 - 22.00</span>
+                            <span class="mb-2">Sabtu: 08.00 - 23.00</span>
+                            <span>Minggu: 06.00 - 23.00</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Start sideBar Menu -->
-    <div class="drawer-side ">
-        <aside class="w-full h-screen overflow-hidden md:w-64 bg-success  text-white">
-            <div class="flex flex-wrap ml-3 mt-2">
-                <i class="bi bi-person-gear text-6xl text-warning"></i>
-                <div class="flex flex-col mt-2 ml-4">
-                    <a href="/edit_data" class="font-bold text-2xl">Seller_01</a>
-                    <span class="font-semibold text-lg">Penjual</span>
-                </div>
-            </div>
-            <ul class="py-4 md:py-0 text-center mt-8 md:overflow-y-auto">
-                <li>
-                    <span class="text-3xl font-bold">DAFTAR MENU</span>
-                </li>
-                <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
-                    <div class="flex items-center">
-                        <i class="bi bi-border-all text-warning text-3xl"></i>
-                        <a href="/penjual/dashboard" class="ml-4 text-xl">Dashboard</a>
-                    </div>
-                </li>
-                <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
-                    <div class="flex items-center">
-                        <i class="bi bi-tags text-warning text-3xl"></i>
-                        <a href="/penjual/detail_produk" class="ml-4 text-xl">Detail Produk</a>
-                    </div>
-                </li>
-                <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
-                    <div class="flex items-center">
-                        <i class="bi bi-building-down text-warning text-3xl"></i>
-                        <a href="/penjual/orderan_masuk" class="ml-4 text-xl">Orderan Masuk</a>
-                    </div>
-                </li>
-                <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
-                    <div class="flex items-center">
-                        <i class="bi bi-building-fill-check text-warning text-3xl "></i>
-                        <a href="/penjual/riwayat_pesanan" class="ml-4 text-xl">Riwayat Pesanan</a>
-                    </div>
-                </li>
-                <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
-                    <div class="flex items-center">
-                        <i class="bi bi-clock-history text-warning text-3xl"></i>
-                        <a href="/penjual/riwayat_transaksi" class="ml-4 text-xl">Riwayat Transaksi</a>
-                    </div>
-                </li>
-            </ul>
-        </aside>
-    </div>
-    <!-- end SideBar Menu -->
-</div>
 </body>
 </html>
