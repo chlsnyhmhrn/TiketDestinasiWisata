@@ -27,13 +27,16 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', [BerandaController::class, 'index']);
-Route::get('/detail', [DetailDestinasiContoller::class, 'index']);
+Route::get('/', [BerandaController::class,'listDestinasi'])->name('listDestinasi');
+Route::get('/detail/{id}', [DetailDestinasiContoller::class, 'detailDestinasi']);
 
-Route::get('/masuk', [AuthController::class, 'index']);
+Route::get('/login', [AuthController::class, 'index']);
 Route::post('/actionLogin', [AuthController::class, 'actionLogin'])->name('actionLogin');
 
 Route::get('/register_penjual', [AuthController::class, 'registrasiPenjual']);
 Route::get('/input_destinasi', [AuthController::class, 'inputDestinasi']);
+Route::post('/input_detinasi/action', [AuthController::class, 'inputDestinasiAction'])->name('inputDestinasiAction');
+Route::get('/input_destinasi', [AuthController::class, 'kategori'])->name('kategori');
 Route::get('/register_pembeli', [AuthController::class, 'registrasiPembeli']);
 Route::post('/register/action', [AuthController::class, 'actionRegister'])->name('actionRegister');
 
@@ -43,14 +46,15 @@ Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/invoice', [InvoiceController::class, 'index']);
 Route::get('/edit_data', [EditDataDiriController::class, 'index']);
 Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
-Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
+
 Route::get('/penjual/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
 Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/penjual/dashboard', [DashboardController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
 Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
 
-Route::get('/admin/dashboard_admin', [DashboardAdminController::class, 'index']);
+Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
+Route::get('/admin/dashboard', [DashboardAdminController::class, 'index']);
 Route::get('/admin/list_destinasi', [ListDestinasiController::class, 'index']);
 Route::get('/admin/list_tiket', [ListTiketController::class, 'index']);
 
