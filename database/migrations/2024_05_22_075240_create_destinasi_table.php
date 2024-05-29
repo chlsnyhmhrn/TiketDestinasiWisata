@@ -23,7 +23,7 @@ return new class extends Migration
             $table->time('jam_buka');
             $table->time('jam_tutup');
             $table->timestamps();
-
+            
             $table->foreign('id_kategori')->references('id_kategori')->on('tbl_kategori')->onDelete('cascade');
         });
     }

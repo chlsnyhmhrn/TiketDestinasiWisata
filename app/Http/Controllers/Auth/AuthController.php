@@ -52,7 +52,7 @@ class AuthController extends Controller
             return redirect('/admin/dashboard');
         } else
         {
-            Session::flash('error', 'Email atau Password Salah');
+            Session::flash('error', 'Username atau Password Salah');
             return redirect('/login');
         }
     }
@@ -72,13 +72,17 @@ class AuthController extends Controller
             return redirect('input_destinasi',);
         }
         else{
-            Session::flash('message', 'Register Berhasil. Silahkan login.');
+            Session::flash('success', 'Register Berhasil. Silahkan login.');
             return redirect('login');
         }
     }
 
     public function inputDestinasiAction(Request $request) 
     {
+        $this->validate($request, [
+            'images' => 'images|mimes:jpeg,jpg,png|max:2048'
+        ]);
+
         $id_user = Auth::user()->id_user;
 
         $data = Destinasi::create([
@@ -100,7 +104,7 @@ class AuthController extends Controller
             $gambar->save();
           }
 
-        Session::flash('message', 'Register Berhasil. Silahkan login.');
+        Session::flash('success', 'Register Berhasil. Silahkan login!');
         return redirect('login');
     }
 
@@ -110,10 +114,10 @@ class AuthController extends Controller
         return view('auth.input_destinasi', compact('kategori'));
     }
 
-    public function signOut() {
+    public function actionLogout() {
         Session::flush();
         Auth::logout();
   
-        return Redirect('login');
+        return Redirect('/')->with('logout','Logout berhasil.');
     }
 }

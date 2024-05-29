@@ -11,7 +11,6 @@
   @include('pembeli.navbar')
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl py-16 lg:max-w-none">
-      <h2 class="text-2xl font-bold text-gray-900">Detail Destinasi Wisata</h2>
       <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
         @foreach ($data->gambar()->get() as $gambar)
           <div class="group relative">
@@ -27,7 +26,7 @@
       <div class="grid grid-cols-2 gap-4 mt-5">
         <div>
           <article class="text-pretty">
-            <h1 class="text-xl font-semibold">{{$data->nama_destinasi}}</h1>
+            <h1 class="text-2xl font-bold">{{$data->nama_destinasi}}</h1>
             <p class="my-2 ms-2"><i class="bi bi-geo-alt text-warning m-1"></i>{{$data->lokasi}}</p>
             <p>
               {{$data->deskripsi}}
@@ -60,7 +59,7 @@
                   <p>Harga Tiket:</p>
                 </div>
                 <div>
-                  <p>Rp. 25,000 / Tiket</p>
+                  <p>Rp. {{number_format($data->harga ,2,',','.');}} / Tiket</p>
                 </div>
                 <div>
                   <p>Harga Total:</p>
