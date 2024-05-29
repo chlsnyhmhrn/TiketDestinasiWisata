@@ -8,7 +8,7 @@
 </head>
 
 <body class="bg-gray-100">
-  @include('pembeli.navbar')
+  @include('admin.navbar_admin')
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-6">
     <div class="mx-auto max-w-2xl py-10 lg:max-w-none">
       <h2 class="text-2xl font-bold text-gray-900 py-4">Data Diri</h2>
