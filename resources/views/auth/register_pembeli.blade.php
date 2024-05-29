@@ -58,7 +58,7 @@
                     class="font-bold bg-yellow-300 text-black px-4 py-2 rounded-2xl hover:bg-yellow-30 focus:outline-none focus:bg-yellow-500">Daftar</button>
             </div>
         </form>
-        <p class="px-4 py-2">Sudah punya akun? <a href="/masuk" class="font-bold text-green-900">Masuk</a></p>
+        <p class="px-4 py-2">Sudah punya akun? <a href="/login" class="font-bold text-green-900">Masuk</a></p>
     </div>
 </body>
 </html>
