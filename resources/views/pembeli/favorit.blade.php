@@ -26,7 +26,7 @@
             <div class="grid grid-cols-1 gap-4 mt-5">
                 <!-- Produk Card 1 -->
                 <div class="card lg:card-side bg-base-100 shadow-xl ">
-                    <img src="./assets/images/penjual/costarina.jpg" alt="" class="p-6 ml-3 w-80" id="produk-foto">
+                    <img src="{{ asset('img/megaocarina.jpg') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
                     <div class="card-body mr-5">
                         <h2 class="card-title">Mega Wisata Ocarina, Batam</h2>
                         <p><i class="bi bi-geo-alt-fill"></i> Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <!-- Produk Card 2 -->
-                <div class="card lg:card-side bg-base-100 shadow-xl border-2">
-                    <img src="./assets/images/penjual/tmnrusa.jpg" alt="" class="p-6 ml-3 w-80" id="produk-foto">
+                <div class="card lg:card-side bg-base-100 shadow-xl border-2 ">
+                    <img src="{{ asset('img/tamanrusa.png') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
                     <div class="card-body mr-5">
                         <h2 class="card-title">Taman Rusa Sekupang, Batam</h2>
                         <p><i class="bi bi-geo-alt-fill"></i> 4WFP+G2P, Tj. Pinggir, Kec. Sekupang, Kota Batam, Kepulauan Riau 29425</p>
@@ -54,7 +54,7 @@
                 </div>
                 <!-- Produk Card 3 -->
                 <div class="card lg:card-side bg-base-100 shadow-xl border-2">
-                    <img src="./assets/images/penjual/dino.png" alt="" class="p-6 ml-3 w-80" id="produk-foto">
+                    <img src="{{ asset('img/dinosgate.png') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto rounded-lg">
                     <div class="card-body mr-5">
                         <h2 class="card-title">Dino's Gate, Batam</h2>
                         <p><i class="bi bi-geo-alt-fill"></i> Bengkong Laut, Golden City, Kota Batam, Kepulauan Riau 29458</p>
@@ -67,8 +67,8 @@
                     </div>
                 </div>
                 <!-- Produk Card 4 -->
-                <div class="card lg:card-side bg-base-100 shadow-xl border-2">
-                        <img src="./assets/images/penjual/images.jpeg" alt="" class="p-6 ml-3 w-80" id="produk-foto">
+                <div class="card lg:card-side bg-base-100 shadow-xl border-2 ">
+                        <img src="{{ asset('img/matakucing.png') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
                         <div class="card-body mr-5">
                             <h2 class="card-title">Hutan Wisata Mata Kucing, Batam</h2>
                             <p><i class="bi bi-geo-alt-fill"></i> Jl. Taman Bukit Golf, Tj. Riau, Sekupang, Batam City, Riau Islands 29424</p>

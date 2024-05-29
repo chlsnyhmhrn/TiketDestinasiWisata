@@ -1,13 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ListPenggunaController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Pembeli\CheckoutController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MasukController;
-use App\Http\Controllers\DaftarLokasiController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RegisterPenjualController;
-use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\Pembeli\BerandaController;
 use App\Http\Controllers\Pembeli\DetailDestinasiContoller;
 use App\Http\Controllers\Pembeli\EditDataDiriController;
@@ -15,19 +11,30 @@ use App\Http\Controllers\Pembeli\FavoritController;
 use App\Http\Controllers\Pembeli\InvoiceController;
 use App\Http\Controllers\Pembeli\KategoriController;
 use App\Http\Controllers\Pembeli\RiwayatPembelianController;
+use App\Http\Controllers\penjual\DashboardController;
 use App\Http\Controllers\Penjual\OrderanMasukController;
 use App\Http\Controllers\Penjual\RiwayatPesananController;
-use App\Http\Controllers\RegisterPembeliController;
+use App\Http\Controllers\Penjual\RiwayatTransaksiController;
+use App\Http\Controllers\Penjual\DetailProdukController;
+use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\ListDestinasiController;
+use App\Http\Controllers\Admin\ListTiketController;
+
 
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [BerandaController::class, 'index']);
-Route::get('/detail', [DetailDestinasiContoller::class, 'index']);
-Route::get('/masuk', [MasukController::class, 'index']);
-Route::get('/favorit', [FavoritController::class, 'index']);
+Route::get('/', [BerandaController::class, 'index'])->name('user.beranda');
+Route::get('/detail/{id}', [DetailDestinasiContoller::class, 'detailDestinasi']);
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/actionLogin', [AuthController::class, 'actionLogin'])->name('actionLogin');
+Route::get('actionLogout', [AuthController::class, 'actionLogout'])->name('actionLogout')->middleware('auth');
+
+Route::get('/favorit', [FavoritController::class, 'index'])->middleware('auth');
+Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth');
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/invoice', [InvoiceController::class, 'index']);
 Route::get('/edit_data', [EditDataDiriController::class, 'index']);
