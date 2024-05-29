@@ -37,5 +37,3 @@ Route::get('/register_penjual', [RegisterPenjualController::class, 'index']);
 Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
 Route::get('/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
-
-//27-4-2024 10:21pm
