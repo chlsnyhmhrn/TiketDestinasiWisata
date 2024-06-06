@@ -69,5 +69,4 @@ Route::get('/edit_data', [EditDataDiriController::class, 'index']);
 Route::get('/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
 Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
 Route::get('/orderan_masuk', [OrderanMasukController::class, 'index']);
-Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
 Route::get('/editakun_admin', [EditAkunAdminController::class, 'index']);
