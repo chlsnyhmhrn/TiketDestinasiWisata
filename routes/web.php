@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ListPenggunaController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Admin\ListUserController;
 use App\Http\Controllers\Pembeli\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pembeli\BerandaController;
@@ -54,8 +55,9 @@ Route::get('/penjual/dashboard', [DashboardController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
 Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
 
-Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
+
 Route::get('/admin/dashboard', [DashboardAdminController::class, 'index']);
+Route::get('/list_pengguna', [ListUserController::class, 'list']);
 Route::get('/admin/list_destinasi', [ListDestinasiController::class, 'index']);
 Route::get('/admin/list_tiket', [ListTiketController::class, 'index']);
 
