@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EditAkunAdminControllerController;
 use App\Http\Controllers\Admin\ListPenggunaController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Pembeli\CheckoutController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\Penjual\DetailProdukController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\ListDestinasiController;
 use App\Http\Controllers\Admin\ListTiketController;
-
+use App\Http\Controllers\Admin\EditAkunAdminController;
 
 
 Route::get('/welcome', function () {
@@ -39,8 +40,7 @@ Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/invoice', [InvoiceController::class, 'index']);
 Route::get('/edit_data', [EditDataDiriController::class, 'index']);
 Route::get('/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
-Route::get('/register_pembeli', [RegisterPembeliController::class, 'index']);
-Route::get('/register_penjual', [RegisterPenjualController::class, 'index']);
 Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
 Route::get('/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
+Route::get('/editakun_admin', [EditAkunAdminController::class, 'index']);
