@@ -80,7 +80,15 @@ class AuthController extends Controller
     public function inputDestinasiAction(Request $request) 
     {
         $this->validate($request, [
-            'images' => 'images|mimes:jpeg,jpg,png|max:2048'
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpeg,jpg,png|max:2048',
+            'id_kategori' => 'required|integer',
+            'nama_destinasi' => 'required|string|max:255',
+            'lokasi' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'harga' => 'required|integer',
+            'jam_buka' => 'required|date_format:H:i',
+            'jam_tutup' => 'required|date_format:H:i',
         ]);
 
         $id_user = Auth::user()->id_user;
