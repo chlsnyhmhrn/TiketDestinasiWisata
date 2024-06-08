@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\EditAkunAdminControllerController;
 use App\Http\Controllers\Admin\ListPenggunaController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Admin\ListUserController;
 use App\Http\Controllers\Pembeli\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pembeli\BerandaController;
@@ -19,7 +21,7 @@ use App\Http\Controllers\Penjual\DetailProdukController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\ListDestinasiController;
 use App\Http\Controllers\Admin\ListTiketController;
-
+use App\Http\Controllers\Admin\EditAkunAdminController;
 
 
 Route::get('/welcome', function () {
@@ -58,10 +60,17 @@ Route::get('/penjual/dashboard', [DashboardController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
 Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
 
-Route::get('/list_pengguna', [ListPenggunaController::class, 'index']);
+
 Route::get('/admin/dashboard', [DashboardAdminController::class, 'index']);
+Route::get('/admin/list_pengguna', [ListUserController::class, 'list']);
 Route::get('/admin/list_destinasi', [ListDestinasiController::class, 'index']);
 Route::get('/admin/list_tiket', [ListTiketController::class, 'index']);
 
 
 //27-4-2024 10:21pm
+
+Route::get('/edit_data', [EditDataDiriController::class, 'index']);
+Route::get('/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
+Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
+Route::get('/orderan_masuk', [OrderanMasukController::class, 'index']);
+Route::get('/editakun_admin', [EditAkunAdminController::class, 'index']);

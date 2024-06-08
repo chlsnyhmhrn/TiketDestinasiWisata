@@ -21,7 +21,7 @@
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                 <div class="flex items-center">
                     <i class="bi bi-person-lines-fill text-warning text-xl"></i>
-                    <a href="/list_pengguna" class="ml-4 text-l">Akun Pengguna</a>
+                    <a href="/admin/list_pengguna" class="ml-4 text-l">Akun Pengguna</a>
                 </div>
             </li> 
             <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">

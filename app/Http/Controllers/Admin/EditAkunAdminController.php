@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ListPenggunaController extends Controller
+class EditAkunAdminController extends Controller
 {
     public function index()
     {
-        return view('admin.list_pengguna');
+        return view('admin.editakun_admin');
     }
 }
