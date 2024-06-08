@@ -56,7 +56,7 @@
                                         <p class="text-sm line-clamp-1">{{ $destinasi->lokasi }}</p>
                                     </div>
                                     <div class="card-actions justify-between py-3">
-                                        <p class="font-semibold text-red-500">RP. {{ $destinasi->harga }}-,</p>
+                                        <p class="font-semibold text-red-500">Rp. {{ number_format($destinasi->harga, 2, ',', '.') }}</p>
                                         @php
                                             $kategori = $destinasi
                                                 ->kategori()

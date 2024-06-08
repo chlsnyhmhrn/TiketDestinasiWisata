@@ -25,15 +25,19 @@ use App\Http\Controllers\Admin\ListTiketController;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
-Route::get('/', [BerandaController::class, 'index'])->name('user.beranda');
-Route::get('/detail/{id}', [DetailDestinasiContoller::class, 'detailDestinasi']);
-
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/actionLogin', [AuthController::class, 'actionLogin'])->name('actionLogin');
 Route::get('actionLogout', [AuthController::class, 'actionLogout'])->name('actionLogout')->middleware('auth');
 
-Route::get('/favorit', [FavoritController::class, 'index'])->middleware('auth');
+Route::get('/', [BerandaController::class, 'index'])->name('user.beranda');
+Route::get('/detail/{id_destinasi}', [DetailDestinasiContoller::class, 'detailDestinasi'])->name('detailDestinasi');
+Route::post('/detail/tambah_favorit', [DetailDestinasiContoller::class, 'tambahFavorit'])->name('detDestinasi.tambah_favorit')->middleware('auth');
+Route::post('/detail/hapus_favorit', [DetailDestinasiContoller::class, 'hapusFavorit'])->name('detDestinasi.hapus_favorit')->middleware('auth');
+Route::post('/detail/tambah_tiket', [DetailDestinasiContoller::class, 'pesanTiket'])->name('detDestinasi.tambah_tiket')->middleware('auth');
+
+Route::get('/favorit/user={id_user}', [FavoritController::class, 'index'])->name('favorit')->middleware('auth');
+Route::post('/favorit/hapus_favorit', [FavoritController::class, 'hapusFavorit'])->name('favorit.hapus')->middleware('auth');
+
 Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth');
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/invoice', [InvoiceController::class, 'index']);

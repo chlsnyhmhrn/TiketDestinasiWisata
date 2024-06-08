@@ -27,6 +27,11 @@ class User extends Authenticatable
         'user_type'
     ];
 
+    public function favorit()
+    {
+        return $this->hasMany(Favorit::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

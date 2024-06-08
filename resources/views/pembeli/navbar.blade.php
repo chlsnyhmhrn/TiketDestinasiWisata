@@ -26,9 +26,11 @@
             </div>
         </div>
         <div class="navbar-end">
-            <a href="/favorit" class="btn btn-ghost btn-circle avatar">
+            @if (Auth::check() && Auth::user()->user_type == 'pembeli')
+            <a href="{{ route('favorit', Auth::user()->id_user) }}" class="btn btn-ghost btn-circle avatar">
                 <i class="text-xl text-white bi bi-heart"></i>
             </a>
+            @endif
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                     <i class="text-2xl text-white bi bi-person-circle"></i>

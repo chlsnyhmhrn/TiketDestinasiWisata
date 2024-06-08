@@ -11,88 +11,93 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
-
+</head>
 
 <body>
     @include('pembeli.navbar')
-
+    @if (session('favorit_success'))
+        <div id="alert" class="fixed top-20 right-4 z-50">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative shadow-md"
+                role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">{{ session('favorit_success') }}</span>
+            </div>
+        </div>
+    @endif
     <div class="container mx-auto">
         <div class="content ml-5">
             <div class="text-2xl font-bold p-1 mt-5">Destinasi Favorit Anda</div>
             <div class="grid grid-cols-1 gap-4 mt-5">
-                <!-- Produk Card 1 -->
-                <div class="card lg:card-side bg-base-100 shadow-xl ">
-                    <img src="{{ asset('img/megaocarina.jpg') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
-                    <div class="card-body mr-5">
-                        <h2 class="card-title">Mega Wisata Ocarina, Batam</h2>
-                        <p><i class="bi bi-geo-alt-fill"></i> Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                        <p class="font-bold text-2xl red text-red-500 ">Rp. 40.000-,</p>
-                        <div class="card-actions justify-end ">
-                            <i class="bi bi-heart text-5xl absolute bottom-40 left-30"></i>
-                            <button
-                                class="btn btn-xl sm:btn-sm md:btn-md lg:btn-lg rounded-full w-40 bg-green-500">Pesan</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Produk Card 2 -->
-                <div class="card lg:card-side bg-base-100 shadow-xl border-2 ">
-                    <img src="{{ asset('img/tamanrusa.png') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
-                    <div class="card-body mr-5">
-                        <h2 class="card-title">Taman Rusa Sekupang, Batam</h2>
-                        <p><i class="bi bi-geo-alt-fill"></i> 4WFP+G2P, Tj. Pinggir, Kec. Sekupang, Kota Batam, Kepulauan Riau 29425</p>
-                        <p class="font-bold text-2xl red text-red-500 ">Rp. 15.000-,</p>
-                        <div class="card-actions justify-end ">
-                            <i class="bi bi-heart text-5xl absolute bottom-40 left-30 "></i>
-                            <button
-                                class="btn btn-xl sm:btn-sm md:btn-md lg:btn-lg rounded-full w-40 bg-green-500">Pesan</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Produk Card 3 -->
-                <div class="card lg:card-side bg-base-100 shadow-xl border-2">
-                    <img src="{{ asset('img/dinosgate.png') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto rounded-lg">
-                    <div class="card-body mr-5">
-                        <h2 class="card-title">Dino's Gate, Batam</h2>
-                        <p><i class="bi bi-geo-alt-fill"></i> Bengkong Laut, Golden City, Kota Batam, Kepulauan Riau 29458</p>
-                        <p class="font-bold text-2xl red text-red-500 ">Rp. 75.000-,</p>
-                        <div class="card-actions justify-end ">
-                            <i class="bi bi-heart text-5xl absolute bottom-40 left-30 "></i>
-                            <button
-                                class="btn btn-xl sm:btn-sm md:btn-md lg:btn-lg rounded-full w-40 bg-green-500">Pesan</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Produk Card 4 -->
-                <div class="card lg:card-side bg-base-100 shadow-xl border-2 ">
-                        <img src="{{ asset('img/matakucing.png') }}" alt="" class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
+                @forelse ($favorit as $fav)
+                    @php
+                        $destinasi = $fav->destinasi;
+                        $gambar = $destinasi
+                            ->gambar()
+                            ->where('id_destinasi', $fav->id_destinasi)
+                            ->first();
+                    @endphp
+                    <div class="card lg:card-side bg-base-100 shadow-xl">
+                        @if ($gambar)
+                            <img src="{{ asset('storage/' . $gambar->url_gambar) }}" alt="Image"
+                                class="p-6 ml-3 w-80 rounded-lg" id="produk-foto">
+                        @endif
                         <div class="card-body mr-5">
-                            <h2 class="card-title">Hutan Wisata Mata Kucing, Batam</h2>
-                            <p><i class="bi bi-geo-alt-fill"></i> Jl. Taman Bukit Golf, Tj. Riau, Sekupang, Batam City, Riau Islands 29424</p>
-                            <p class="font-bold text-2xl red text-red-500 ">Rp. 40.000-,</p>
-                            <div class="card-actions justify-end ">
-                                <i class="bi bi-heart text-5xl absolute bottom-40 left-30 "></i>
-                                <button class="btn btn-xl sm:btn-sm md:btn-md lg:btn-lg rounded-full w-40 bg-green-500">Pesan</button>
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="col-span-3">
+                                    <h2 class="card-title">{{ $destinasi->nama_destinasi }}</h2>
+                                </div>
+                                <div class="flex justify-end">
+                                    <form action="{{ route('favorit.hapus') }}" method="post"
+                                        onsubmit="return confirmDelete(this);">
+                                        @csrf
+                                        <input type="hidden" name="id_user" value="{{ Auth::user()->id_user }}">
+                                        <input type="hidden" name="id_destinasi"
+                                            value="{{ $destinasi->id_destinasi }}">
+                                        <button class="btn btn-circle bg-error text-white" type="submit">
+                                            <i class="bi bi-heart-fill text-xl"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <p><i class="bi bi-geo-alt-fill"></i> {{ $destinasi->lokasi }}</p>
+                            <p class="font-bold text-2xl red text-red-500">Rp.
+                                {{ number_format($destinasi->harga, 2, ',', '.') }}</p>
+                            <div class="card-actions justify-end">
+                                <a href="{{ route('detailDestinasi', $destinasi->id_destinasi) }}"
+                                    class="btn btn-md sm:btn-sm md:btn-md rounded-full w-40 bg-success text-white">Pesan</a>
                             </div>
                         </div>
                     </div>
-                <!-- Tambahkan Produk Card Lainnya di Sini -->
+                @empty
+                    <div class="text-center text-xl font-semibold mt-10">Belum ada tempat wisata yang disimpan di
+                        halaman favorit Anda.</div>
+                @endforelse
             </div>
         </div>
     </div>
 
+    <script>
+        function confirmDelete(form) {
+            if (confirm('Apakah Anda yakin ingin menghapus destinasi ini dari favorit?')) {
+                return true;
+            }
+            return false;
+        }
 
-
-
-
-
-
-
-
-
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close alert after 2 seconds
+            setTimeout(function() {
+                const alert = document.getElementById('alert');
+                if (alert) {
+                    alert.remove();
+                }
+            }, 5000);
+        });
+    </script>
 </body>
 
 </html>
