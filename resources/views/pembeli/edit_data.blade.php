@@ -20,7 +20,7 @@
     @endif
 
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-6">
-        <div class="mx-auto max-w-2xl py-5 lg:max-w-none w-96 py-14">
+        <div class="mx-auto max-w-2xl lg:max-w-none w-96 py-14">
             <div class="flex justify-center">
                 <i class="bi bi-person-circle text-success" style="font-size: 100px;"></i>
             </div>

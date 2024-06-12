@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penjual;
 
 use App\Http\Controllers\Controller;
+use App\Models\Destinasi;
 use Illuminate\Http\Request;
 
 class DetailProdukController extends Controller

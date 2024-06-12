@@ -46,7 +46,7 @@ class AuthController extends Controller
             return redirect('/');
         } else if(Auth::Attempt($data) && Auth::user()->user_type == 'penjual')
         {
-            return redirect('/penjual/dashboard');
+            return redirect()->route('dashboard.penjual', Auth::user()->id_user);
         } else if(Auth::Attempt($data) && Auth::user()->user_type == 'admin')
         {
             return redirect('/admin/dashboard');

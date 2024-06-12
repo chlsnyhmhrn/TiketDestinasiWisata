@@ -29,5 +29,10 @@ class Tiket extends Model
         return $this->belongsTo(Destinasi::class, 'id_destinasi');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
     public $timestamps = false;
 }

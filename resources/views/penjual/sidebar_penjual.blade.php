@@ -1,17 +1,6 @@
     <!-- start Sidebar -->
-    <aside class="w-full md:w-64 bg-success text-white">
-        <div class="flex flex-wrap ml-3 mt-2">
-            <i class="bi bi-person-circle text-6xl text-warning"></i>
-            <div class="flex flex-col mt-2 ml-4">
-                <a href="/edit_data" class="font-bold text-2xl">Seller_01</a>
-                <span class="font-semibold text-lg">Penjual</span>
-            </div>
-        </div>
-        <hr>
-        <ul class="py-2 md:py-0 text-center mt-8 md:overflow-y-auto">
-            <li>
-                <span class="text-xl font-bold">DAFTAR MENU</span>
-            </li>
+    <aside class="w-full md:w-64 bg-success text-white sticky top-0 z-49">
+        <ul class="py-2 md:py-0 px-3 text-center md:overflow-y-auto">
             <a href="/penjual/dashboard">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
                     <div class="flex items-center">
@@ -19,7 +8,7 @@
                         <span class="ml-4 text-l">Dashboard</span>
                     </div>
                 </li>
-            </a>   
+            </a>
             <a href="/penjual/detail_produk ">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                     <div class="flex items-center">

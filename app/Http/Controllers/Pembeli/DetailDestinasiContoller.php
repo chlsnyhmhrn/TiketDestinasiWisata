@@ -67,15 +67,15 @@ class DetailDestinasiContoller extends Controller
     public function pesanTiket(Request $request)
     {
         $code_tiket = $this->getCode();
+        $tanggal_pesanan = date("Y-m-d H:i:s");
         $tiket = Tiket::create([
             'id_destinasi' => $request->input('id_destinasi'),
             'id_user'=> $request->input('id_user'),
             'total_pesanan'=> $request->input('total_pesanan'),
             'total_harga'=> $request->input('total_harga'),
-            'tanggal_pesanan'=> $request->input('tanggal_pesanan'),
+            'tanggal_pesanan'=> $tanggal_pesanan,
             'tanggal_kunjungan'=> $request->input('tanggal_kunjungan'),
             'code_tiket'=> $code_tiket,
-            'status'=> $request->input('status')
         ]);
 
         Session::flash('tiket_success', 'Pembelian tiket destinasi wisata berhasil!');

@@ -9,55 +9,88 @@
 
 <body>
     @include('pembeli.navbar')
-
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-6">
-        <div class="mx-auto max-w-2xl py-10 lg:max-w-none">
-            <h2 class="text-2xl font-bold text-gray-900 py-4">Riwayat Pembelian</h2>
-
-            <div class="card card-side bg-base-100 shadow-xl">
-                <figure><img src="{{ asset('img/2.jpg') }}" alt="" class="w-60 h-50 px-2 py-2 rounded-xl"></figure>
-                <div class="card-body">
-                    <h2 class="card-title font-bold">Mega Wisata Ocarina</h2>
-                    <p> Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                    <h3 class="card-title font-bold text-red-500">Rp. 75.000-,</h3>
-                    <div class="card-actions justify-end">
-                        <button class="btn bg-success text-black">Invoice</button>
-                        <button class="btn bg-warning text-black">Beli Lagi</button>
-                    </div>
-                    <p>Tanggal Pembelian: 15 April 2024</p>
-                </div>
+    @if (session('batalkan_pesanan'))
+        <div id="alert" class="fixed top-20 right-4 z-50">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative shadow-md"
+                role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">{{ session('batalkan_pesanan') }}</span>
             </div>
-            <div class="divider"></div>
-            <div class="card card-side bg-base-100 shadow-xl">
-                <figure><img src="{{ asset('img/3.jpg') }}" alt="" class="w-60 h-50 px-2 py-2 rounded-xl">
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title font-bold">Mega Wisata Ocarina</h2>
-                    <p> Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                    <h3 class="card-title font-bold text-red-500">Rp. 150.000-,</h3>
-                    <div class="card-actions justify-end">
-                        <button class="btn bg-success text-black">Invoice</button>
-                        <button class="btn bg-warning text-black">Beli Lagi</button>
-                    </div>
-                    <p>Tanggal Pembelian: 18 Februari 2024</p>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="card card-side bg-base-100 shadow-xl">
-                <figure><img src="{{ asset('img/1.jpg') }}" alt="" class="w-60 h-50 px-2 py-2 rounded-xl">
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title font-bold">Mega Wisata Ocarina</h2>
-                    <p> Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                    <h3 class="card-title font-bold text-red-500">Rp. 40.000-,</h3>
-                    <div class="card-actions justify-end">
-                        <button class="btn bg-success text-black">Invoice</button>
-                        <button class="btn bg-warning text-black">Beli Lagi</button>
-                    </div>
-                    <p>Tanggal Pembelian: 27 April 2024</p>
+        </div>
+    @endif
+    <div class="container mx-auto">
+        <div class="content ml-5">
+            <div class="mx-auto">
+                <div class="mx-auto max-w-2xl py-10 lg:max-w-none">
+                    <h2 class="text-2xl font-bold text-gray-900 py-4">Riwayat Pembelian</h2>
+                    @foreach ($tiket as $tiket)
+                        @php
+                            $destinasi = $tiket->destinasi;
+                            $gambar = $destinasi
+                                ->gambar()
+                                ->where('id_destinasi', $tiket->id_destinasi)
+                                ->first();
+                            \Carbon\Carbon::setLocale('id');
+                            $tanggalKunjungan = \Carbon\Carbon::parse($tiket->tanggal_kunjungan)->translatedFormat(
+                                'd F Y',
+                            );
+                        @endphp
+                        <div class="card card-side bg-base-100 shadow-xl">
+                            @if ($gambar)
+                                <figure><img src="{{ asset('storage/' . $gambar->url_gambar) }}"
+                                        class="p-6 w-80 rounded-xl">
+                                </figure>
+                            @endif
+                            <div class="card-body">
+                                <div class="grid grid-cols-4 gap-4">
+                                    <div class="col-span-3">
+                                        <h2 class="card-title">{{ $destinasi->nama_destinasi }}</h2>
+                                    </div>
+                                    <div class="flex justify-end text-end">
+                                        @if ($tiket->status == 'Diproses')
+                                            <p class="font-semibold text-warning">{{ $tiket->status }}</p>
+                                        @elseif ($tiket->status == 'Disetujui')
+                                            <p class="font-semibold text-success">{{ $tiket->status }}</p>
+                                        @else
+                                            <p class="font-semibold text-error">{{ $tiket->status }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <p><i class="bi bi-geo-alt-fill text-warning"></i> {{ $destinasi->lokasi }}</p>
+                                <p class="font-semibold">Jumlah Tiket: {{ $tiket->total_pesanan }}</p>
+                                <p class="font-semibold">Tanggal Kunjungan: {{ $tanggalKunjungan }}</p>
+                                <div class="card-actions justify-end">
+                                    @if ($tiket->status == 'Diproses')
+                                        <a href="{{ route('invoice', $tiket->id_tiket) }}" aria-disabled="true"
+                                            class="btn bg-warning text-white rounded-full btn-disabled">Invoice</a>
+                                        <form action="{{ route('riwayatPembelian.batalkan_pesanan', $tiket->id_tiket) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input hidden name="status" type="number" value="2">
+                                            <button class="btn bg-error text-white rounded-full">Batalkan</button>
+                                        </form>
+                                    @elseif ($tiket->status == 'Dibatalkan')
+                                        <a href="{{ route('invoice', $tiket->id_tiket) }}" aria-disabled="true"
+                                            class="btn bg-warning text-white rounded-full btn-disabled">Invoice</a>
+                                        <a href="{{ route('detailDestinasi', $destinasi->id_destinasi) }}"
+                                            class="btn bg-success text-white rounded-full">Pesan Lagi</a>
+                                    @else
+                                        <a href="{{ route('invoice', $tiket->id_tiket) }}"
+                                            class="btn bg-warning text-white rounded-full">Invoice</a>
+                                        <a href="{{ route('detailDestinasi', $destinasi->id_destinasi) }}"
+                                            class="btn bg-success text-white rounded-full">Pesan Lagi</a>
+                                    @endif
+                                </div>
+                                <h3 class="card-title font-bold text-red-500">Rp.
+                                    {{ number_format($tiket->total_harga, 2, ',', '.') }}</h3>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

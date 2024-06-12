@@ -20,6 +20,16 @@
         </div>
     @endif
 
+    @if (session('tiket_success'))
+        <div id="alert" class="fixed top-20 right-4 z-50">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative shadow-md"
+                role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">{{ session('tiket_success') }}</span>
+            </div>
+        </div>
+    @endif
+
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl py-16 lg:max-w-none">
             <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
@@ -65,6 +75,11 @@
                 <div>
                     <article class="text-pretty">
                         <h1 class="text-2xl font-bold">{{ $data->nama_destinasi }}</h1>
+                        @if ($data->status == 'Buka')
+                            <div class="badge badge-outline badge-accent p-3 my-2">{{ $data->status }}</div>
+                        @else
+                            <div class="badge badge-outline badge-error p-3 my-2">{{ $data->status }}</div>
+                        @endif
                         <p class="my-2 ms-2"><i class="bi bi-geo-alt text-warning m-1"></i>{{ $data->lokasi }}</p>
                         <p>{{ $data->deskripsi }}</p>
                         <h3 class="text-base font-semibold mt-5">Jam Buka</h3>
@@ -76,7 +91,7 @@
                     </article>
                 </div>
                 <div class="flex justify-end">
-                    <div class="card w-96 bg-base-100 shadow-xl border-0">
+                    <div class="card w-96 h-min bg-base-100 shadow-xl border-0">
                         <div class="card-body">
                             <h2 class="card-title">Pesan Tiket</h2>
                             <div class="grid grid-cols-2 gap-4">
@@ -114,7 +129,9 @@
                                                 class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                         </form>
                                         <h3 class="font-bold text-lg">Pesan Tiket</h3>
-                                        <form action="{{ route('detDestinasi.tambah_tiket') }}" class="mt-3">
+                                        <form action="{{ route('detDestinasi.tambah_tiket') }}" class="mt-3"
+                                            method="POST">
+                                            @csrf
                                             <div class="grid grid-cols-2 gap-4">
                                                 <div>
                                                     <p>Nama Pemesan:</p>
@@ -140,7 +157,7 @@
                                                 <div>
                                                     <p id="tanggalKunjunganText" class="font-semibold"></p>
                                                     <input hidden id="tanggalKunjunganModal" type="date"
-                                                        placeholder="Type here"
+                                                        placeholder="Type here" name="tanggal_kunjungan"
                                                         class="input input-sm input-bordered w-full max-w-xs" />
                                                 </div>
                                                 <div>
@@ -148,7 +165,8 @@
                                                 </div>
                                                 <div>
                                                     <p id="jumlahTiketText" class="font-semibold"></p>
-                                                    <input hidden id="jumlahTiketModal" type="number" placeholder="Jumlah"
+                                                    <input hidden id="jumlahTiketModal" type="number"
+                                                        placeholder="Jumlah" name="total_pesanan"
                                                         class="input input-sm input-bordered w-full max-w-xs" />
                                                 </div>
                                             </div>
@@ -159,11 +177,13 @@
                                                 </div>
                                                 <div>
                                                     <p id="totalHargaText" class="font-semibold"></p>
-                                                    <input id="totalHargaModal" hidden type="number" placeholder="Total"
+                                                    <input id="totalHargaModal" hidden type="number"
+                                                        placeholder="Total" name="total_harga"
                                                         class="input input-sm input-bordered w-full max-w-xs" />
                                                 </div>
                                             </div>
-                                            <button class="btn btn-success text-white w-full mt-3">Konfirmasi</button>
+                                            <button type="submit"
+                                                class="btn btn-success text-white w-full mt-3">Konfirmasi</button>
                                         </form>
                                     </div>
                                 </dialog>
@@ -176,7 +196,8 @@
     </div>
 
     <div id="alert-login" class="fixed top-20 right-4 z-50 hidden">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md" role="alert">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
+            role="alert">
             <strong class="font-bold">Error!</strong>
             <span class="block sm:inline">Silahkan login terlebih dahulu</span>
         </div>

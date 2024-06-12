@@ -10,15 +10,6 @@
 <body>
     @include('pembeli.navbar')
     <div class="container px-6 mx-auto">
-        @if (session('logout'))
-            <div id="alert" class="fixed top-20 right-4 z-50">
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative shadow-md"
-                    role="alert">
-                    <strong class="font-bold">Success!</strong>
-                    <span class="block sm:inline">{{ session('logout') }}</span>
-                </div>
-            </div>
-        @endif
         <div class="mt-16 lg:grid lg:grid-cols-4 gap-6">
             @if ($data->isEmpty())
                 <div class="text-center text-gray-500 py-8">Destinasi wisata tidak ditemukan.</div>
@@ -52,7 +43,7 @@
                                     @endif
                                     <h2 class="card-title line-clamp-2">{{ $destinasi->nama_destinasi }}</h2>
                                     <div class="flex">
-                                        <i class="bi bi-geo-alt text-success me-1 text-sm"></i>
+                                        <i class="bi bi-geo-alt text-warning me-1 text-sm"></i>
                                         <p class="text-sm line-clamp-1">{{ $destinasi->lokasi }}</p>
                                     </div>
                                     <div class="card-actions justify-between py-3">
@@ -76,17 +67,6 @@
             @endif
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const alert = document.getElementById('alert');
-                if (alert) {
-                    alert.remove();
-                }
-            }, 5000);
-        });
-    </script>
 </body>
 
 </html>
