@@ -177,8 +177,8 @@
                                                 </div>
                                                 <div>
                                                     <p id="totalHargaText" class="font-semibold"></p>
-                                                    <input id="totalHargaModal" hidden type="number"
-                                                        placeholder="Total" name="total_harga"
+                                                    <input id="totalHargaModal" hidden type="number" placeholder="Total"
+                                                        name="total_harga"
                                                         class="input input-sm input-bordered w-full max-w-xs" />
                                                 </div>
                                             </div>
@@ -196,24 +196,22 @@
     </div>
 
     <div id="alert-login" class="fixed top-20 right-4 z-50 hidden">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
-            role="alert">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md" role="alert">
             <strong class="font-bold">Error!</strong>
             <span class="block sm:inline">Silahkan login terlebih dahulu</span>
         </div>
     </div>
 
     <div id="alert-pesan" class="fixed top-20 right-4 z-50 hidden">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
-            role="alert">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md" role="alert">
             <strong class="font-bold">Error!</strong>
             <span class="block sm:inline">Tanggal Kunjungan & Jumlah Tiket tidak boleh kosong</span>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
                 const alert = document.getElementById('alert');
                 if (alert) {
                     alert.remove();
