@@ -20,7 +20,18 @@ class DashboardController extends Controller
         $pendapatan = $this->calculateRevenue($destinasi->id_destinasi, $filter);
         $proses = $this->calculatePending($destinasi->id_destinasi);
 
-        return view('penjual.dashboard', compact('destinasi', 'tiket', 'pendapatan', 'filter', 'proses'));
+        $filter_pengunjung = $request->input('filter_pengunjung', 'daily');
+        $pengunjung = $this->calculateVisitors($destinasi->id_destinasi, $filter_pengunjung);
+
+        $pesanan_masuk = $tiket->filter(function ($item) {
+            return $item->status === 'Diproses';
+        })->sortByDesc('tanggal_pesanan')->take(7);
+
+        $riwayat_pesanan = $tiket->filter(function ($item) {
+            return $item->status === 'Dibatalkan' || $item->status === 'Disetujui';
+        })->sortByDesc('tanggal_pesanan')->take(7);
+
+        return view('penjual.dashboard', compact('destinasi', 'tiket', 'pendapatan', 'filter', 'proses', 'filter_pengunjung', 'pengunjung', 'pesanan_masuk', 'riwayat_pesanan'));
     }
 
     private function calculateRevenue($id_destinasi, $filter)
@@ -52,11 +63,40 @@ class DashboardController extends Controller
         return (int) $pendapatan;
     }
 
+    private function calculateVisitors($id_destinasi, $filter)
+    {
+        switch ($filter) {
+            case 'daily':
+                $pengunjung = Tiket::where('id_destinasi', $id_destinasi)
+                    ->where('status', 'Disetujui')
+                    ->whereDate('tanggal_pesanan', Carbon::today())
+                    ->sum('total_pesanan');
+                break;
+            case 'weekly':
+                $pengunjung = Tiket::where('id_destinasi', $id_destinasi)
+                    ->where('status', 'Disetujui')
+                    ->whereBetween('tanggal_pesanan', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->sum('total_pesanan');
+                break;
+            case 'monthly':
+                $pengunjung = Tiket::where('id_destinasi', $id_destinasi)
+                    ->where('status', 'Disetujui')
+                    ->whereMonth('tanggal_pesanan', Carbon::now()->month)
+                    ->whereYear('tanggal_pesanan', Carbon::now()->year)
+                    ->sum('total_pesanan');
+                break;
+            default:
+                $pengunjung = 0;
+                break;
+        }
+        return (int) $pengunjung;
+    }
+
     private function calculatePending($id_destinasi)
     {
         $proses = Tiket::where('id_destinasi', $id_destinasi)
-        ->where('status', 'Diproses')
-        ->count();
+            ->where('status', 'Diproses')
+            ->count();
 
         return (int) $proses;
     }

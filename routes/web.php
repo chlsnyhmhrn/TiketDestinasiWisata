@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\ListDestinasiController;
 use App\Http\Controllers\Admin\ListTiketController;
 use App\Http\Controllers\Admin\EditAkunAdminController;
-
+use App\Http\Controllers\Penjual\DetailDestinasiController;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -55,10 +55,10 @@ Route::get('/user/{id_user}', [EditDataDiriController::class, 'index'])->middlew
 Route::put('/user/{id_user}/update', [EditDataDiriController::class, 'update'])->name('user.edit')->middleware('auth');
 
 Route::get('/penjual/dashboard/{id_user}', [DashboardController::class, 'index'])->name('dashboard.penjual')->middleware('auth');
+Route::get('/penjual/detail/{id_destinasi}', [DetailDestinasiController::class, 'index'])->name('detail.penjual')->middleware('auth');
 Route::get('/penjual/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
 Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
-Route::get('/penjual/detail_produk', [DetailProdukController::class, 'index']);
 
 Route::get('/admin/dashboard', [DashboardAdminController::class, 'index']);
 Route::get('/admin/list_pengguna', [ListUserController::class, 'list']);

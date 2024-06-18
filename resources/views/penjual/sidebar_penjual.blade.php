@@ -1,7 +1,7 @@
     <!-- start Sidebar -->
     <aside class="w-full md:w-64 bg-success text-white sticky top-0 z-49">
         <ul class="py-2 md:py-0 px-3 text-center md:overflow-y-auto">
-            <a href="/penjual/dashboard">
+            <a href="{{ route('dashboard.penjual', Auth::user()->id_user) }}">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
                     <div class="flex items-center">
                         <i class="bi bi-house-door-fill text-warning text-xl"></i>
@@ -9,7 +9,7 @@
                     </div>
                 </li>
             </a>
-            <a href="/penjual/detail_produk ">
+            <a href="{{ route('detail.penjual', $destinasi->id_destinasi) }}">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="bi bi-tags text-warning text-xl"></i>

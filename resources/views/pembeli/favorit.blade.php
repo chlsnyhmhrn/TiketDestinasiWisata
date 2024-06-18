@@ -31,7 +31,7 @@
     <div class="container mx-auto">
         <div class="content">
             <div class="mx-auto">
-                <div class="mx-auto max-w-2xl py-10 lg:max-w-none">
+                <div class="mx-auto max-w-2xl py-10 lg:max-w-6xl">
                     <div class="text-2xl font-bold p-1 mt-5">Destinasi Favorit Anda</div>
                     <div class="grid grid-cols-1 gap-4 mt-5">
                         @forelse ($favorit as $fav)

@@ -22,7 +22,7 @@
         @include('pembeli.navbar')
     </div>
     <div class="container mx-auto py-10">
-        <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden lg:max-w-6xl">
             <div class="px-6 py-4">
                 <div class="flex justify-between items-center">
                     <h1 class="text-2xl font-bold">Invoice</h1>
