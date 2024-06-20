@@ -42,7 +42,7 @@
                         <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                             <div class="flex justify-end">
                                 <form method="GET"
-                                    action="{{ route('dashboard.penjual', ['id_user' => $destinasi->id_user]) }}">
+                                    action="{{ route('penjual.dashboard', ['id_user' => $destinasi->id_user]) }}">
                                     <select name="filter_pengunjung" onchange="this.form.submit()"
                                         class="select select-sm h-min w-min font-semibold rounded-md bg-gray-200">
                                         <option value="daily" {{ $filter_pengunjung == 'daily' ? 'selected' : '' }}>
@@ -75,7 +75,7 @@
                         <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                             <div class="flex justify-end">
                                 <form method="GET"
-                                    action="{{ route('dashboard.penjual', ['id_user' => $destinasi->id_user]) }}">
+                                    action="{{ route('penjual.dashboard', ['id_user' => $destinasi->id_user]) }}">
                                     <select name="filter" onchange="this.form.submit()"
                                         class="select select-sm h-min w-min font-semibold rounded-md bg-gray-200">
                                         <option value="daily" {{ $filter == 'daily' ? 'selected' : '' }}>Harian

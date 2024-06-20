@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->hasMany(Favorit::class);
     }
 
+    public function destinasi()
+    {
+        return $this->hasMany(Destinasi::class, 'id_user');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

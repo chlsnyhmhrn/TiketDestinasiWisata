@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Destinasi</title>
     @vite('resources/css/app.css')
-
+    <style>
+        .preview img {
+            max-width: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body class="bg-success flex justify-center items-center min-h-screen">
@@ -32,7 +38,8 @@
                                 required>
                                 <option disabled selected></option>
                                 @foreach ($kategori as $data)
-                                <option class="bg-white" value="{{ $data->id_kategori }}">{{ $data->nama_kategori }}</option>
+                                    <option class="bg-white" value="{{ $data->id_kategori }}">{{ $data->nama_kategori }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -53,19 +60,21 @@
                                 <div class="w-1/2">
                                     <label for="jam_buka" class="block mb-2">Jam Buka</label>
                                     <input type="time" id="jam_buka" name="jam_buka"
-                                    class="input input-bordered w-full bg-gray-300 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500">
+                                        class="input input-bordered w-full bg-gray-300 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500">
                                 </div>
                                 <div class="w-1/2">
                                     <label for="jam_tutup" class="block mb-2">Jam Tutup</label>
                                     <input type="time" id="jam_tutup" name="jam_tutup"
-                                    class="input input-bordered w-full bg-gray-300 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500">
+                                        class="input input-bordered w-full bg-gray-300 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500">
                                 </div>
                             </div>
                         </div>
                         <div class="mb-4 w-full" id="namaDestinasiInput">
                             <label for="namaDestinasi" class=" block mb-2">Foto Destinasi (3 Foto)</label>
-                            <input type="file" name="images[]" class="file-input file-input-success w-full max-w-xs"
+                            <input type="file" id="image-input" name="images[]" class="file-input file-input-success w-full max-w-xs"
                                 multiple />
+                            <div id="image-preview" class="preview mt-2 flex">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,6 +92,22 @@
             <p class="px-4 py-2 text-center"><a href="" class="text-green-900">Tambahkan Destinasi Nanti</a></p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('image-input').addEventListener('change', function(event) {
+            const imagePreview = document.getElementById('image-preview');
+            imagePreview.innerHTML = '';
+            Array.from(event.target.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    imagePreview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -41,17 +41,13 @@ class AuthController extends Controller
             'password' => $request->input('password'),
         ];
 
-        if (Auth::Attempt($data) && Auth::user()->user_type == 'pembeli') 
-        {
+        if (Auth::Attempt($data) && Auth::user()->user_type == 'pembeli') {
             return redirect('/');
-        } else if(Auth::Attempt($data) && Auth::user()->user_type == 'penjual')
-        {
-            return redirect()->route('dashboard.penjual', Auth::user()->id_user);
-        } else if(Auth::Attempt($data) && Auth::user()->user_type == 'admin')
-        {
+        } else if (Auth::Attempt($data) && Auth::user()->user_type == 'penjual') {
+            return redirect()->route('penjual.dashboard', Auth::user()->id_user);
+        } else if (Auth::Attempt($data) && Auth::user()->user_type == 'admin') {
             return redirect('/admin/dashboard');
-        } else
-        {
+        } else {
             Session::flash('error', 'Username atau Password Salah');
             return redirect('/login');
         }
@@ -68,64 +64,79 @@ class AuthController extends Controller
         ]);
 
         if ($user->user_type == 2) {
+            session(['input_destinasi' => true]);
+
             Auth::login($user);
-            return redirect('input_destinasi',);
-        }
-        else{
+            return redirect('input_destinasi');
+        } else {
             Session::flash('success', 'Register Berhasil. Silahkan login.');
             return redirect('login');
         }
     }
 
-    public function inputDestinasiAction(Request $request) 
+
+    public function inputDestinasiAction(Request $request)
     {
-        $this->validate($request, [
-            'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,jpg,png|max:2048',
-            'id_kategori' => 'required|integer',
-            'nama_destinasi' => 'required|string|max:255',
-            'lokasi' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'harga' => 'required|integer',
-            'jam_buka' => 'required|date_format:H:i',
-            'jam_tutup' => 'required|date_format:H:i',
-        ]);
+        try {
+            $this->validate($request, [
+                'images' => 'nullable|array|min:3|max:3',
+                'images.*' => 'image|mimes:jpeg,jpg,png|max:2048',
+                'id_kategori' => 'required|integer',
+                'nama_destinasi' => 'required|string|max:255',
+                'lokasi' => 'required|string|max:255',
+                'deskripsi' => 'required|string',
+                'harga' => 'required|integer',
+                'jam_buka' => 'required|date_format:H:i',
+                'jam_tutup' => 'required|date_format:H:i',
+            ]);
 
-        $id_user = Auth::user()->id_user;
+            if (!session('input_destinasi')) {
+                throw new \Exception('Pengguna tidak dalam sesi input destinasi.');
+            }
 
-        $data = Destinasi::create([
-            'id_user' => $id_user,
-            'id_kategori' => $request->id_kategori,
-            'nama_destinasi' => $request->nama_destinasi,
-            'lokasi' => $request->lokasi,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'jam_buka' => $request->jam_buka,
-            'jam_tutup' => $request->jam_tutup,
-        ]);
+            $id_user = Auth::user()->id_user;
 
-        foreach ($request->file('images') as $file_gambar) {
-            $gambar = new Gambar;
-            $path = $file_gambar->store('images', 'public');
-            $gambar->url_gambar = $path;
-            $gambar->id_destinasi = $data->id_destinasi;
-            $gambar->save();
-          }
+            $data = Destinasi::create([
+                'id_user' => $id_user,
+                'id_kategori' => $request->id_kategori,
+                'nama_destinasi' => $request->nama_destinasi,
+                'lokasi' => $request->lokasi,
+                'deskripsi' => $request->deskripsi,
+                'harga' => $request->harga,
+                'jam_buka' => $request->jam_buka,
+                'jam_tutup' => $request->jam_tutup,
+            ]);
 
-        Session::flash('success', 'Register Berhasil. Silahkan login!');
-        return redirect('login');
+            foreach ($request->file('images') as $file_gambar) {
+                $gambar = new Gambar;
+                $path = $file_gambar->store('images', 'public');
+                $gambar->url_gambar = $path;
+                $gambar->id_destinasi = $data->id_destinasi;
+                $gambar->save();
+            }
+
+            session()->forget('input_destinasi');
+
+            Session::flash('success', 'Destinasi berhasil ditambahkan.');
+            return redirect('login');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
+        }
     }
 
-    public function kategori() {
+
+    public function kategori()
+    {
         $kategori = Kategori::get();
-        
+
         return view('auth.input_destinasi', compact('kategori'));
     }
 
-    public function actionLogout() {
+    public function actionLogout()
+    {
         Session::flush();
         Auth::logout();
-  
-        return Redirect('/')->with('logout','Logout berhasil.');
+
+        return Redirect('/')->with('logout', 'Logout berhasil.');
     }
 }

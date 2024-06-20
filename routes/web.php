@@ -54,8 +54,11 @@ Route::get('/kategori/{id_kategori}', [KategoriController::class, 'index'])->nam
 Route::get('/user/{id_user}', [EditDataDiriController::class, 'index'])->middleware('auth');
 Route::put('/user/{id_user}/update', [EditDataDiriController::class, 'update'])->name('user.edit')->middleware('auth');
 
-Route::get('/penjual/dashboard/{id_user}', [DashboardController::class, 'index'])->name('dashboard.penjual')->middleware('auth');
-Route::get('/penjual/detail/{id_destinasi}', [DetailDestinasiController::class, 'index'])->name('detail.penjual')->middleware('auth');
+Route::get('/penjual/dashboard/{id_user}', [DashboardController::class, 'index'])->name('penjual.dashboard')->middleware('auth');
+Route::get('/penjual/detail/edit/{id_destinasi}', [DetailDestinasiController::class, 'editDetailView'])->name('penjual.edit_detail_view')->middleware('auth');
+Route::get('/penjual/detail/{id_destinasi}', [DetailDestinasiController::class, 'index'])->name('penjual.detail')->middleware('auth');
+Route::put('/penjual/detail/edit_action/{id_destinasi}', [DetailDestinasiController::class,'editDetail'])->name('penjual.edit_detail_action')->middleware('auth');
+Route::put('/penjual/detail/edit_status_action/{id_destinasi}', [DetailDestinasiController::class,'editStatus'])->name('penjual.edit_status_action')->middleware('auth');
 Route::get('/penjual/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
 Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
 Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
