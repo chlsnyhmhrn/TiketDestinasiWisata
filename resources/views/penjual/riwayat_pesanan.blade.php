@@ -5,94 +5,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Pesanan</title>
+    <title>Pesanan Masuk</title>
     @vite('resources/css/app.css')
+    <script>
+        function submitForm() {
+            document.getElementById('searchForm').submit();
+        }
+    </script>
 </head>
 
 <body>
     @include('penjual.navbar_penjual')
-        <div class="flex flex-col min-h-screen md:flex-row bg-gray-100">
-            @include('penjual.sidebar_penjual')
-            <!-- star card produk -->
-            <div class="flex flex-col w-full px-8 gap-5">
-                <p class="text-2xl font-bold mt-4 mx-4">Riwayat Pesanan</p>
-                {{--start card session--}}
-                <div class="card lg:card-side ml-4 bg-base-100 shadow-xl p-2 max-w-full">
-                    <div class="flex flex-col">
-                        <div class="flex">
-                            <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
-                            <p class="font-semibold text-md ml-2 p-1">Third_Buyer01</p>
+    <div class="flex flex-col h-screen md:flex-row bg-gray-100">
+        @include('penjual.sidebar_penjual')
+        <div class="w-full bg-white p-8 rounded-2xl shadow-md">
+            <p class="text-3xl font-bold">Pesanan Masuk</p>
+            
+            <!-- Search Form -->
+            
+            <div class="flex flex-col mt-5">
+                <form id="searchForm" method="GET" action="{{ route('penjual.riwayat_pesanan', $destinasi->id_destinasi) }}" class="flex items-center gap-2 mb-2">
+                    <input autocomplete="off" type="text" name="search" placeholder="Cari" class="input input-bordered input-sm w-full bg-gray-100 focus:outline-none focus:border-green-500">
+                    <select name="status" class="select select-sm select-bordered bg-gray-100 focus:outline-none focus:border-green-500" onchange="submitForm()">
+                        <option disabled selected>Status</option>
+                        <option value="Disetujui">Disetujui</option>
+                        <option value="Dibatalkan">Dibatalkan</option>
+                    </select>
+                </form>
+                <div class="overflow-x-auto rounded-lg">
+                    <div class="align-middle inline-block min-w-full">
+                        <div class="shadow overflow-hidden sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pembeli</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode Tiket</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Kunjungan</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Pembelian</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Tiket</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Harga</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Invoice</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white">
+                                    @if ($tiket)
+                                        @foreach ($tiket as $item)
+                                            <tr>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">{{ $item->user->full_name }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">{{ $item->code_tiket }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">{{ \Carbon\Carbon::parse($item->tanggal_kunjungan)->locale('id')->translatedFormat('l, d F Y') }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">{{ \Carbon\Carbon::parse($item->tanggal_pesanan)->locale('id')->translatedFormat('l, d F Y') }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{{ $item->total_pesanan }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">Rp. {{ number_format($item->total_harga, 2, ',', '.') }}</td>
+                                                <td class="font-semibold">
+                                                    @if ($item->status == 'Disetujui')
+                                                        <p class="text-success">{{ $item->status }}</p>
+                                                    @else
+                                                        <p class="text-error">{{ $item->status }}</p>
+                                                    @endif
+                                                </td>
+                                                <td class="font-semibold">
+                                                    @if ($item->status == 'Disetujui')
+                                                        <a href="{{ route('penjual.invoice', $item->id_tiket) }}" class="btn btn-sm text-sm text-white btn-warning">Invoice</a>
+                                                    @else
+                                                        <a href="{{ route('penjual.invoice', $item->id_tiket) }}" aria-disabled="true" class="btn btn-sm text-sm text-white btn-warning btn-disabled">Invoice</a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="8" class="p-4 text-center text-sm font-normal text-gray-500">Belum ada pesanan masuk.</td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
-                        <figure><img src="../img/2.jpg" class="w-60 h-50 px-2 py-2 rounded-xl " alt="Album" /></figure>
-                    </div>
-                    <div class="card-body">
-                        <div class="flex">
-                            <h2 class="card-title flex-1 font-bold text-lg">Mega Wisata Ocarina, Batam</h2>
-                            <span class="text-red-500 font-semibold text-md">Selesai</span>
-                        </div>
-                        <div class="flex">
-                            <i class="bi bi-geo-alt text-warning"></i>
-                            <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                        </div>
-                        <p class="font-semibold">x1</p>
-                        <p class=" font-semibold text-sm">Total Pesanan : <span class="text-red-500 font-semibold">Rp.
-                                40.000</span> </p>
-                        <p class="font-semibold mt-3 text-sm">Tanggal Pembelian : 23-03-2024</p>
-                    </div>
-                </div>
-                {{--end card session--}}
-                {{--start card session--}}
-                <div class="card lg:card-side ml-4 bg-base-100 shadow-xl p-2 max-w-full">
-                    <div class="flex flex-col">
-                        <div class="flex">
-                            <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
-                            <p class="font-semibold text-md ml-2 p-1">Third_Buyer01</p>
-                        </div>
-                        <figure><img src="../img/2.jpg" class="w-60 h-50 px-2 py-2 rounded-xl " alt="Album" /></figure>
-                    </div>
-                    <div class="card-body">
-                        <div class="flex">
-                            <h2 class="card-title flex-1 font-bold text-lg">Mega Wisata Ocarina, Batam</h2>
-                            <span class="text-red-500 font-semibold text-md">Selesai</span>
-                        </div>
-                        <div class="flex">
-                            <i class="bi bi-geo-alt text-warning"></i>
-                            <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                        </div>
-                        <p class="font-semibold">x1</p>
-                        <p class=" font-semibold text-sm">Total Pesanan : <span class="text-red-500 font-semibold">Rp.
-                                40.000</span> </p>
-                        <p class="font-semibold mt-3 text-sm">Tanggal Pembelian : 23-03-2024</p>
-                    </div>
-                </div>
-                {{--end card session--}}
-                {{--start card session--}}
-                <div class="card lg:card-side ml-4 bg-base-100 shadow-xl p-2 max-w-full">
-                    <div class="flex flex-col">
-                        <div class="flex">
-                            <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
-                            <p class="font-semibold text-md ml-2 p-1">Third_Buyer01</p>
-                        </div>
-                        <figure><img src="../img/2.jpg" class="w-60 h-50 px-2 py-2 rounded-xl " alt="Album" /></figure>
-                    </div>
-                    <div class="card-body">
-                        <div class="flex">
-                            <h2 class="card-title flex-1 font-bold text-lg">Mega Wisata Ocarina, Batam</h2>
-                            <span class="text-red-500 font-semibold text-md">Selesai</span>
-                        </div>
-                        <div class="flex">
-                            <i class="bi bi-geo-alt text-warning"></i>
-                            <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                        </div>
-                        <p class="font-semibold">x1</p>
-                        <p class=" font-semibold text-sm">Total Pesanan : <span class="text-red-500 font-semibold">Rp.
-                                40.000</span> </p>
-                        <p class="font-semibold mt-3 text-sm">Tanggal Pembelian : 23-03-2024</p>
                     </div>
                 </div>
-                {{--end card session--}}
             </div>
         </div>
+    </div>
 </body>
 
 </html>

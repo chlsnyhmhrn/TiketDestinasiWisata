@@ -1,5 +1,5 @@
     <!-- start Sidebar -->
-    <aside class="w-full md:w-64 bg-success text-white sticky top-0 z-49">
+    <aside class="no-print w-full md:w-64 bg-success text-white sticky top-0 z-49">
         <ul class="py-2 md:py-0 px-3 text-center md:overflow-y-auto">
             <a href="{{ route('penjual.dashboard', Auth::user()->id_user) }}">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer mt-6">
@@ -17,15 +17,15 @@
                     </div>
                 </li>
             </a>
-            <a href="/penjual/orderan_masuk">
+            <a href="{{ route('penjual.orderan_masuk', $destinasi->id_destinasi) }}">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="bi bi-building-down text-warning text-xl"></i>
-                        <span class="ml-4 text-l">Orderan Masuk</span>
+                        <span class="ml-4 text-l">Pesanan Masuk</span>
                     </div>
                 </li>
             </a>     
-            <a href="/penjual/riwayat_pesanan">
+            <a href="{{ route('penjual.riwayat_pesanan', $destinasi->id_destinasi) }}">
                 <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
                     <div class="flex items-center">
                         <i class="bi bi-building-fill-check text-warning text-xl "></i>
@@ -33,14 +33,6 @@
                     </div>
                 </li>
             </a>
-            <a href="/penjual/riwayat_transaksi">
-                <li class="block px-4 py-2 hover:bg-stone-700 hover:cursor-pointer">
-                    <div class="flex items-center">
-                        <i class="bi bi-clock-history text-warning text-xl"></i>
-                        <span  class="ml-4 text-l">Riwayat Transaksi</span>
-                    </div>
-                </li>
-            </a> 
         </ul>
     </aside>
     <!-- End Sidebar -->

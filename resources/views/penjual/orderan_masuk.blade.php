@@ -1,144 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Orderan Masuk</title>
-        @vite('resources/css/app.css')
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Masuk</title>
+    @vite('resources/css/app.css')
+</head>
 
-    <body>
-        @include('penjual.navbar_penjual')
-        <div class="flex flex-col md:flex-row bg-gray-100">
-            @include('penjual.sidebar_penjual')
-            <div class="flex flex-col w-full px-8 py-10">
-
-                <div class="max-w-full flex flex-col gap-5">
-
-                    <p class="text-2xl font-bold mt-4 mx-4">Orderan Masuk</p>
-
-                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 w-full ">
-                        <div class="flex flex-col">
-                            <div class="flex">
-                                <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
-                                <p class="font-semibold text-md ml-2 p-1">Third_Buyer01</p>
-                            </div>
-
-                            <figure><img src="../img/2.jpg" class="w-60 h-50 px-2 py-2 rounded-xl " alt="Album" /></figure>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title flex-1 font-bold">Mega Wisata Ocarina, Batam</h2>
-                            <div class="flex">
-                                <i class="bi bi-geo-alt text-warning"></i>
-                                <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                            </div>
-                            <p class="font-semibold">Dewasa :</p>
-                            <div class="flex">
-                                <span class="text-red-500 font-semibold">Rp. 40.000</span>
-                                <span class="font-semibold ml-10">2x</span>
-                            </div>
-                            <p class="font-semibold">Anak - Anak</p>
-                            <div class="flex">
-                                <span class="text-red-500 font-semibold">Rp. 25.000</span>
-                                <span class="font-semibold ml-10">1x</span>
-                            </div>
-                            <div class="flex">
-                                <p class="font-semibold text-lg">Total Pesanan : <span
-                                        class="text-red-500 font-semibold">Rp. 105.000</span></p>
-                                <div class="mb-4">
-                                    <select id="status-pesanan" name="status-pesanan"
-                                        class="w-lg px-4 py-2 border border-gray-300 bg-success text-white rounded-md cursor-pointer focus:outline-none">
-                                        <option value="pesanan-masuk">Pesanan Masuk</option>
-                                        <option value="pesanan-selesai">Pesanan Selesai</option>
-                                        <option value="pesanan-selesai">Tolak Pesanan</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 w-full ">
-                        <div class="flex flex-col">
-                            <div class="flex">
-                                <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
-                                <p class="font-semibold text-md ml-2 p-1">Third_Buyer01</p>
-                            </div>
-
-                            <figure><img src="../img/2.jpg" class="w-60 h-50 px-2 py-2 rounded-xl " alt="Album" /></figure>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title flex-1 font-bold">Mega Wisata Ocarina, Batam</h2>
-                            <div class="flex">
-                                <i class="bi bi-geo-alt text-warning"></i>
-                                <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                            </div>
-                            <p class="font-semibold">Dewasa :</p>
-                            <div class="flex">
-                                <span class="text-red-500 font-semibold">Rp. 40.000</span>
-                                <span class="font-semibold ml-10">2x</span>
-                            </div>
-                            <p class="font-semibold">Anak - Anak</p>
-                            <div class="flex">
-                                <span class="text-red-500 font-semibold">Rp. 25.000</span>
-                                <span class="font-semibold ml-10">1x</span>
-                            </div>
-                            <div class="flex">
-                                <p class="font-semibold text-lg">Total Pesanan : <span
-                                        class="text-red-500 font-semibold">Rp. 105.000</span></p>
-                                <div class="mb-4">
-                                    <select id="status-pesanan" name="status-pesanan"
-                                        class="w-lg px-4 py-2 border border-gray-300 bg-success text-white rounded-md cursor-pointer focus:outline-none">
-                                        <option value="pesanan-masuk">Pesanan Masuk</option>
-                                        <option value="pesanan-selesai">Pesanan Selesai</option>
-                                        <option value="pesanan-selesai">Tolak Pesanan</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card lg:card-side bg-base-100 shadow-xl p-2 w-full ">
-                        <div class="flex flex-col">
-                            <div class="flex">
-                                <i class="bi bi-person-circle text-warning" style="font-size: 24px;"></i>
-                                <p class="font-semibold text-md ml-2 p-1">Third_Buyer01</p>
-                            </div>
-
-                            <figure><img src="../img/2.jpg" class="w-60 h-50 px-2 py-2 rounded-xl " alt="Album" /></figure>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title flex-1 font-bold">Mega Wisata Ocarina, Batam</h2>
-                            <div class="flex">
-                                <i class="bi bi-geo-alt text-warning"></i>
-                                <p class=ml-1>Sadai, Kec. Bengkong, Kota Batam, Kepulauan Riau 29444</p>
-                            </div>
-                            <p class="font-semibold">Dewasa :</p>
-                            <div class="flex">
-                                <span class="text-red-500 font-semibold">Rp. 40.000</span>
-                                <span class="font-semibold ml-10">2x</span>
-                            </div>
-                            <p class="font-semibold">Anak - Anak</p>
-                            <div class="flex">
-                                <span class="text-red-500 font-semibold">Rp. 25.000</span>
-                                <span class="font-semibold ml-10">1x</span>
-                            </div>
-                            <div class="flex">
-                                <p class="font-semibold text-lg">Total Pesanan : <span
-                                        class="text-red-500 font-semibold">Rp. 105.000</span></p>
-                                <div class="mb-4">
-                                    <select id="status-pesanan" name="status-pesanan"
-                                        class="w-lg px-4 py-2 border border-gray-300 bg-success text-white rounded-md cursor-pointer focus:outline-none">
-                                        <option value="pesanan-masuk">Pesanan Masuk</option>
-                                        <option value="pesanan-selesai">Pesanan Selesai</option>
-                                        <option value="pesanan-selesai">Tolak Pesanan</option>
-                                    </select>
-                                </div>
-                            </div>
+<body>
+    @include('penjual.navbar_penjual')
+    <div class="flex flex-col h-screen md:flex-row bg-gray-100">
+        @include('penjual.sidebar_penjual')
+        <div class="w-full bg-white p-8 rounded-2xl shadow-md">
+            <p class="text-3xl font-bold">Pesanan Masuk</p>
+            <div class="flex flex-col mt-8">
+                <div class="overflow-x-auto rounded-lg">
+                    <div class="align-middle inline-block min-w-full">
+                        <div class="shadow overflow-hidden sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Pembeli
+                                        </th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Tanggal Kunjungan
+                                        </th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Tanggal Pembelian
+                                        </th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Total Tiket
+                                        </th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Total Harga
+                                        </th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            ...
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white">
+                                    @if ($tiket)
+                                        @foreach ($tiket as $item)
+                                            <tr>
+                                                <td
+                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $item->user->full_name }}
+                                                </td>
+                                                <td
+                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                    {{ \Carbon\Carbon::parse($item->tanggal_kunjungan)->locale('id')->translatedFormat('l, d F Y') }}
+                                                </td>
+                                                <td
+                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                    {{ \Carbon\Carbon::parse($item->tanggal_pesanan)->locale('id')->translatedFormat('l, d F Y') }}
+                                                </td>
+                                                <td
+                                                    class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                    {{ $item->total_pesanan }}
+                                                </td>
+                                                <td
+                                                    class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                    Rp.
+                                                    {{ number_format($item->total_harga, 2, ',', '.') }}
+                                                </td>
+                                                <td>
+                                                    <div class="flex gap-2">
+                                                        <form action="{{ route('penjual.setujui_pesanan', $item->id_tiket) }}" method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <button type="submit" class="btn text-white text-xs btn-success btn-sm rounded-md">
+                                                                Setujui
+                                                            </button>
+                                                        </form>
+                                                        <form action="{{ route('penjual.batalkan_pesanan', $item->id_tiket) }}" method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <button type="submit" class="btn text-white text-xs btn-error btn-sm rounded-md">
+                                                                Batalkan
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <p>Belum ada pesanan masuk.</p>
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                        <!-- Tambahkan sesuai kebutuhan -->
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

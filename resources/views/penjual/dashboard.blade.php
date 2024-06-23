@@ -24,7 +24,7 @@
                 <div class="pt-6 px-6">
                     <div class="flex justify-between items-stretch">
                         <div class="self-center">
-                            <p class="text-4xl font-bold">Dashboard</p>
+                            <p class="text-3xl font-bold">Dashboard</p>
                         </div>
                         <div class="self-center flex gap-5">
                             <p class="border h-min py-2 px-3 rounded-md font-semibold border-gray-400">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                             <div class="flex justify-end py-2">
-                                <a href="" class="text-sm font-medium text-cyan-600">Lihat ></a>
+                                <a href="{{ route('penjual.orderan_masuk', $destinasi->id_destinasi) }}" class="text-sm font-medium text-cyan-600">Lihat ></a>
                             </div>
                             <div class="flex items-center">
                                 <div class="flex-shrink-0">
@@ -127,7 +127,7 @@
                                     <h3 class="text-xl font-bold text-gray-900 mb-2">Pesanan Masuk</h3>
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <a href="#"
+                                    <a href="{{ route('penjual.orderan_masuk', $destinasi->id_destinasi) }}"
                                         class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">Lihat
                                         ></a>
                                 </div>
@@ -196,7 +196,7 @@
                                     <h3 class="text-xl font-bold text-gray-900 mb-2">Riwayat Pesanan</h3>
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <a href="#"
+                                    <a href="{{ route('penjual.riwayat_pesanan', $destinasi->id_destinasi) }}"
                                         class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">Lihat
                                         ></a>
                                 </div>

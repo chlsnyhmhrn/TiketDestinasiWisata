@@ -15,7 +15,7 @@
         <div class="navbar-center">
             <div class="form-control w-72">
                 <form action="{{ route('user.beranda') }}" method="GET">
-                    <input type="text" placeholder="Search" name="search" class="input input-bordered rounded-full input-sm w-full max-w-xs">
+                    <input type="text" placeholder="Cari" name="search" class="input input-bordered rounded-full input-sm w-full max-w-xs">
                 </form>
             </div>
             <div class="dropdown">

@@ -38,7 +38,7 @@
     <div class="flex flex-col h-screen md:flex-row bg-gray-100">
         @include('penjual.sidebar_penjual')
         <div class="w-full bg-white p-8 rounded-2xl shadow-md">
-            <p class="text-4xl font-bold">Edit Destinasi</p>
+            <p class="text-3xl font-bold">Edit Destinasi</p>
             <div class="mt-3 border border-gray-200 rounded shadow-sm p-8">
                 <form action="{{ route('penjual.edit_detail_action', $destinasi->id_destinasi) }}" method="POST"
                     enctype="multipart/form-data">

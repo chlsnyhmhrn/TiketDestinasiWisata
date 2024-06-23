@@ -55,24 +55,36 @@ class AuthController extends Controller
 
     public function actionRegister(Request $request)
     {
-        $user = User::create([
-            'email' => $request->email,
-            'username' => $request->username,
-            'full_name' => $request->full_name,
-            'password' => Hash::make($request->password),
-            'user_type' => $request->user_type,
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|email|unique:users,email',
+                'username' => 'required|string|unique:users,username',
+                'full_name' => 'required|string|max:255',
+                //'password' => 'required|string|min:8|confirmed',
+                'user_type' => 'required|integer',
+            ]);
 
-        if ($user->user_type == 2) {
-            session(['input_destinasi' => true]);
+            $user = User::create([
+                'email' => $request->email,
+                'username' => $request->username,
+                'full_name' => $request->full_name,
+                'password' => Hash::make($request->password),
+                'user_type' => $request->user_type,
+            ]);
 
-            Auth::login($user);
-            return redirect('input_destinasi');
-        } else {
-            Session::flash('success', 'Register Berhasil. Silahkan login.');
-            return redirect('login');
+            if ($user->user_type == 2) {
+                session(['input_destinasi' => true]);
+                Auth::login($user);
+                return redirect('input_destinasi');
+            } else {
+                Session::flash('success', 'Register Berhasil. Silahkan login.');
+                return redirect('login');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
 
 
     public function inputDestinasiAction(Request $request)
@@ -137,6 +149,6 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
 
-        return Redirect('/')->with('logout', 'Logout berhasil.');
+        return Redirect()->route('user.beranda')->with('logout', 'Logout berhasil.');
     }
 }

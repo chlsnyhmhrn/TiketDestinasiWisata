@@ -1,78 +1,89 @@
 <?php
 
-use App\Http\Controllers\Admin\EditAkunAdminControllerController;
-use App\Http\Controllers\Admin\ListPenggunaController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Admin\ListUserController;
-use App\Http\Controllers\Pembeli\CheckoutController;
+use App\Http\Controllers\Admin\{
+    DashboardAdminController,
+    EditAkunAdminController,
+    ListDestinasiController,
+    ListTiketController,
+    ListUserController
+};
+use App\Http\Controllers\Pembeli\{
+    BerandaController,
+    DetailDestinasiContoller,
+    EditDataDiriController,
+    FavoritController,
+    InvoiceController,
+    KategoriController,
+    RiwayatPembelianController
+};
+use App\Http\Controllers\Penjual\{
+    DashboardController,
+    DetailDestinasiController,
+    OrderanMasukController,
+    RiwayatPesananController,
+};
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Pembeli\BerandaController;
-use App\Http\Controllers\Pembeli\DetailDestinasiContoller;
-use App\Http\Controllers\Pembeli\EditDataDiriController;
-use App\Http\Controllers\Pembeli\FavoritController;
-use App\Http\Controllers\Pembeli\InvoiceController;
-use App\Http\Controllers\Pembeli\KategoriController;
-use App\Http\Controllers\Pembeli\RiwayatPembelianController;
-use App\Http\Controllers\penjual\DashboardController;
-use App\Http\Controllers\Penjual\OrderanMasukController;
-use App\Http\Controllers\Penjual\RiwayatPesananController;
-use App\Http\Controllers\Penjual\RiwayatTransaksiController;
-use App\Http\Controllers\Penjual\DetailProdukController;
-use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\Admin\ListDestinasiController;
-use App\Http\Controllers\Admin\ListTiketController;
-use App\Http\Controllers\Admin\EditAkunAdminController;
-use App\Http\Controllers\Penjual\DetailDestinasiController;
 
-Route::get('/welcome', function () {
-    return view('welcome');
+// Auth
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'index')->name('login');
+    Route::post('/actionLogin', 'actionLogin')->name('actionLogin');
+    Route::get('actionLogout', 'actionLogout')->name('actionLogout')->middleware('auth');
+    Route::get('/register_penjual', 'registrasiPenjual');
+    Route::get('/register_pembeli', 'registrasiPembeli');
+    Route::post('/register/action', 'actionRegister')->name('actionRegister');
+    Route::get('/input_destinasi', 'inputDestinasi');
+    Route::post('/input_detinasi/action', 'inputDestinasiAction')->name('inputDestinasiAction');
+    Route::get('/input_destinasi', 'kategori')->name('kategori');
 });
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/actionLogin', [AuthController::class, 'actionLogin'])->name('actionLogin');
-Route::get('actionLogout', [AuthController::class, 'actionLogout'])->name('actionLogout')->middleware('auth');
-Route::get('/register_penjual', [AuthController::class, 'registrasiPenjual']);
-Route::get('/register_pembeli', [AuthController::class, 'registrasiPembeli']);
-Route::post('/register/action', [AuthController::class, 'actionRegister'])->name('actionRegister');
-Route::get('/input_destinasi', [AuthController::class, 'inputDestinasi']);
-Route::post('/input_detinasi/action', [AuthController::class, 'inputDestinasiAction'])->name('inputDestinasiAction');
-Route::get('/input_destinasi', [AuthController::class, 'kategori'])->name('kategori');
 
-Route::get('/', [BerandaController::class, 'index'])->name('user.beranda');
-Route::get('/detail/{id_destinasi}', [DetailDestinasiContoller::class, 'detailDestinasi'])->name('detailDestinasi');
-Route::post('/detail/tambah_favorit', [DetailDestinasiContoller::class, 'tambahFavorit'])->name('detDestinasi.tambah_favorit')->middleware('auth');
-Route::post('/detail/hapus_favorit', [DetailDestinasiContoller::class, 'hapusFavorit'])->name('detDestinasi.hapus_favorit')->middleware('auth');
-Route::post('/detail/tambah_tiket', [DetailDestinasiContoller::class, 'pesanTiket'])->name('detDestinasi.tambah_tiket')->middleware('auth');
+// Pembeli
+Route::prefix('')->group(function () {
+    Route::get('/', [BerandaController::class, 'index'])->name('user.beranda');
+    Route::prefix('detail')->group(function () {
+        Route::get('{id_destinasi}', [DetailDestinasiContoller::class, 'detailDestinasi'])->name('detailDestinasi');
+        Route::post('tambah_favorit', [DetailDestinasiContoller::class, 'tambahFavorit'])->name('detDestinasi.tambah_favorit')->middleware('auth');
+        Route::post('hapus_favorit', [DetailDestinasiContoller::class, 'hapusFavorit'])->name('detDestinasi.hapus_favorit')->middleware('auth');
+        Route::post('tambah_tiket', [DetailDestinasiContoller::class, 'pesanTiket'])->name('detDestinasi.tambah_tiket')->middleware('auth');
+    });
+    Route::get('favorit/user={id_user}', [FavoritController::class, 'index'])->name('favorit')->middleware('auth');
+    Route::post('favorit/hapus_favorit', [FavoritController::class, 'hapusFavorit'])->name('favorit.hapus')->middleware('auth');
+    Route::get('riwayat_pembelian/user={id_user}', [RiwayatPembelianController::class, 'index'])->name('riwayatPembelian')->middleware('auth');
+    Route::put('riwayat_pembelian/batalkan_pesanan/{id_tiket}', [RiwayatPembelianController::class, 'batalkanPesanan'])->name('riwayatPembelian.batalkan_pesanan')->middleware('auth');
+    Route::get('invoice/{id_tiket}', [InvoiceController::class, 'index'])->name('invoice')->middleware('auth');
+    Route::get('kategori/{id_kategori}', [KategoriController::class, 'index'])->name('halaman.kategori');
+    Route::prefix('user/{id_user}')->group(function () {
+        Route::get('', [EditDataDiriController::class, 'index'])->middleware('auth');
+        Route::put('update', [EditDataDiriController::class, 'update'])->name('user.edit')->middleware('auth');
+    });
+});
 
-Route::get('/favorit/user={id_user}', [FavoritController::class, 'index'])->name('favorit')->middleware('auth');
-Route::post('/favorit/hapus_favorit', [FavoritController::class, 'hapusFavorit'])->name('favorit.hapus')->middleware('auth');
+// Penjual
+Route::prefix('penjual')->middleware('auth')->group(function () {
+    Route::get('dashboard/{id_user}', [DashboardController::class, 'index'])->name('penjual.dashboard');
+    Route::prefix('detail')->group(function () {
+        Route::get('edit/{id_destinasi}', [DetailDestinasiController::class, 'editDetailView'])->name('penjual.edit_detail_view');
+        Route::get('{id_destinasi}', [DetailDestinasiController::class, 'index'])->name('penjual.detail');
+        Route::put('edit_action/{id_destinasi}', [DetailDestinasiController::class, 'editDetail'])->name('penjual.edit_detail_action');
+        Route::put('edit_status_action/{id_destinasi}', [DetailDestinasiController::class, 'editStatus'])->name('penjual.edit_status_action');
+    });
+    Route::prefix('orderan_masuk')->group(function () {
+        Route::get('{id_destinasi}', [OrderanMasukController::class, 'index'])->name('penjual.orderan_masuk');
+        Route::put('batalkan_pesanan/{id_tiket}', [OrderanMasukController::class, 'batalkanPesanan'])->name('penjual.batalkan_pesanan');
+        Route::put('setujui_pesanan/{id_tiket}', [OrderanMasukController::class, 'setujuiPesanan'])->name('penjual.setujui_pesanan');
+    });
+    Route::prefix('riwayat_pesanan')->group(function (){
+        Route::get('{id_destinasi}', [RiwayatPesananController::class, 'index'])->name('penjual.riwayat_pesanan');
+        Route::get('invoice/{id_tiket}', [RiwayatPesananController::class, 'invoice'])->name('penjual.invoice');
+    });
+});
 
-Route::get('/riwayat_pembelian/user={id_user}', [RiwayatPembelianController::class, 'index'])->name('riwayatPembelian')->middleware('auth');
-Route::put('/riwayat_pembelian/batalkan_pesanan/{id_tiket}', [RiwayatPembelianController::class, 'batalkanPesanan'])->name('riwayatPembelian.batalkan_pesanan')->middleware('auth');
-Route::get('/invoice/{id_tiket}', [InvoiceController::class, 'index'])->name('invoice')->middleware('auth');
-
-Route::get('/kategori/{id_kategori}', [KategoriController::class, 'index'])->name('halaman.kategori');
-Route::get('/user/{id_user}', [EditDataDiriController::class, 'index'])->middleware('auth');
-Route::put('/user/{id_user}/update', [EditDataDiriController::class, 'update'])->name('user.edit')->middleware('auth');
-
-Route::get('/penjual/dashboard/{id_user}', [DashboardController::class, 'index'])->name('penjual.dashboard')->middleware('auth');
-Route::get('/penjual/detail/edit/{id_destinasi}', [DetailDestinasiController::class, 'editDetailView'])->name('penjual.edit_detail_view')->middleware('auth');
-Route::get('/penjual/detail/{id_destinasi}', [DetailDestinasiController::class, 'index'])->name('penjual.detail')->middleware('auth');
-Route::put('/penjual/detail/edit_action/{id_destinasi}', [DetailDestinasiController::class,'editDetail'])->name('penjual.edit_detail_action')->middleware('auth');
-Route::put('/penjual/detail/edit_status_action/{id_destinasi}', [DetailDestinasiController::class,'editStatus'])->name('penjual.edit_status_action')->middleware('auth');
-Route::get('/penjual/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
-Route::get('/penjual/orderan_masuk', [OrderanMasukController::class, 'index']);
-Route::get('/penjual/riwayat_transaksi', [RiwayatTransaksiController::class, 'index']);
-
-Route::get('/admin/dashboard', [DashboardAdminController::class, 'index']);
-Route::get('/admin/list_pengguna', [ListUserController::class, 'list']);
-Route::get('/admin/list_destinasi', [ListDestinasiController::class, 'index']);
-Route::get('/admin/list_tiket', [ListTiketController::class, 'index']);
-
-
-//27-4-2024 10:21pm
-
-Route::get('/edit_data', [EditDataDiriController::class, 'index']);
-Route::get('/riwayat_pesanan', [RiwayatPesananController::class, 'index']);
-Route::get('/riwayat_pembelian', [RiwayatPembelianController::class, 'index']);
-Route::get('/orderan_masuk', [OrderanMasukController::class, 'index']);
-Route::get('/editakun_admin', [EditAkunAdminController::class, 'index']);
+// Admin
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', [DashboardAdminController::class, 'index']);
+    Route::get('list_pengguna', [ListUserController::class, 'list']);
+    Route::get('list_destinasi', [ListDestinasiController::class, 'index']);
+    Route::get('list_tiket', [ListTiketController::class, 'index']);
+    Route::get('editakun_admin', [EditAkunAdminController::class, 'index']);
+});

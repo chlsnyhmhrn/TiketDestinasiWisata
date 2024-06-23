@@ -80,8 +80,8 @@
                         @else
                             <div class="badge badge-outline badge-error p-3 my-2">{{ $data->status }}</div>
                         @endif
-                        <p class="my-2 ms-2"><i class="bi bi-geo-alt text-warning m-1"></i>{{ $data->lokasi }}</p>
-                        <p>{{ $data->deskripsi }}</p>
+                        <p class="my-2 font-semibold"><i class="bi bi-geo-alt text-warning mr-1"></i>{{ $data->lokasi }}</p>
+                        <p>{!! nl2br(e($data->deskripsi)) !!}</p>
                         <h3 class="text-base font-semibold mt-5">Jam Buka</h3>
                         <p>
                             <i class="bi bi-alarm mr-1"></i>

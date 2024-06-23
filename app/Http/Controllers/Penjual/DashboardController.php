@@ -69,20 +69,20 @@ class DashboardController extends Controller
             case 'daily':
                 $pengunjung = Tiket::where('id_destinasi', $id_destinasi)
                     ->where('status', 'Disetujui')
-                    ->whereDate('tanggal_pesanan', Carbon::today())
+                    ->whereDate('tanggal_kunjungan', Carbon::today())
                     ->sum('total_pesanan');
                 break;
             case 'weekly':
                 $pengunjung = Tiket::where('id_destinasi', $id_destinasi)
                     ->where('status', 'Disetujui')
-                    ->whereBetween('tanggal_pesanan', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->whereBetween('tanggal_kunjungan', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
                     ->sum('total_pesanan');
                 break;
             case 'monthly':
                 $pengunjung = Tiket::where('id_destinasi', $id_destinasi)
                     ->where('status', 'Disetujui')
-                    ->whereMonth('tanggal_pesanan', Carbon::now()->month)
-                    ->whereYear('tanggal_pesanan', Carbon::now()->year)
+                    ->whereMonth('tanggal_kunjungan', Carbon::now()->month)
+                    ->whereYear('tanggal_kunjungan', Carbon::now()->year)
                     ->sum('total_pesanan');
                 break;
             default:

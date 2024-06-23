@@ -56,10 +56,10 @@
                                     class="toggle toggle-success p-3 my-2"
                                     {{ $destinasi->status == 'Buka' ? 'checked' : '' }}>
                             </div>
-                            <p class="my-2 ms-2"><i
-                                    class="bi bi-geo-alt text-warning m-1"></i>{{ $destinasi->lokasi }}
+                            <p class="my-2 font-semibold"><i
+                                    class="bi bi-geo-alt text-warning mr-1"></i>{{ $destinasi->lokasi }}
                             </p>
-                            <p>{{ $destinasi->deskripsi }}</p>
+                            <p>{!! nl2br(e($destinasi->deskripsi)) !!}</p>
                             <h3 class="text-base font-semibold mt-5">Jam Buka</h3>
                             <p>
                                 <i class="bi bi-alarm mr-1"></i>
