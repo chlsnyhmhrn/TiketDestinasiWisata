@@ -81,9 +81,9 @@ Route::prefix('penjual')->middleware('auth')->group(function () {
 
 // Admin
 Route::prefix('admin')->group(function () {
-    Route::get('dashboard', [DashboardAdminController::class, 'index']);
-    Route::get('list_pengguna', [ListUserController::class, 'list']);
-    Route::get('list_destinasi', [ListDestinasiController::class, 'index']);
-    Route::get('list_tiket', [ListTiketController::class, 'index']);
+    Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('list_pengguna', [ListUserController::class, 'list'])->name('admin.list_pengguna');
+    Route::get('list_destinasi', [ListDestinasiController::class, 'index'])->name('admin.list_destinasi');
+    Route::get('list_tiket', [ListTiketController::class, 'index'])->name('admin.list_tiket');
     Route::get('editakun_admin', [EditAkunAdminController::class, 'index']);
 });
