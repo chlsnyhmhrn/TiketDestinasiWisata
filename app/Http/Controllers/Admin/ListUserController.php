@@ -38,6 +38,9 @@ class ListUserController extends Controller
     public function list(Request $request)
     {
         $user = User::all();
-        return view('admin.list_pengguna', compact('user'));
+
+        $cari_user = $user->where('username', 'like', $request->username);
+
+        return view('admin.list_pengguna', compact('user', 'cari_user'));
     }
 }

@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class ListTiketController extends Controller
 {
     public function index()
-{
-    $tikets = Tiket::with(['destinasi', 'user'])->get();
-    return view('admin.list_tiket', compact('tikets'));
-}
+    {
+        $tikets = Tiket::with(['destinasi', 'user'])->get();
+        return view('admin.list_tiket', compact('tikets'));
+    }
 }

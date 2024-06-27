@@ -16,6 +16,15 @@
 </head>
 
 <body class="bg-success flex justify-center items-center min-h-screen">
+    @if (session('error'))
+        <div id="alert" class="fixed top-5 right-4 z-50">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
+                role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        </div>
+    @endif
     <div class="flex min-h-screen flex-col justify-center p-16">
         <div class="w-full bg-white p-8 rounded-2xl shadow-md">
             <h2 class="text-2xl font-bold text-center mb-2">Input Destinasi</h2>
@@ -71,8 +80,8 @@
                         </div>
                         <div class="mb-4 w-full" id="namaDestinasiInput">
                             <label for="namaDestinasi" class=" block mb-2">Foto Destinasi (3 Foto)</label>
-                            <input type="file" id="image-input" name="images[]" class="file-input file-input-success w-full max-w-xs"
-                                multiple />
+                            <input type="file" id="image-input" name="images[]"
+                                class="file-input file-input-success w-full max-w-xs" multiple />
                             <div id="image-preview" class="preview mt-2 flex">
                             </div>
                         </div>
