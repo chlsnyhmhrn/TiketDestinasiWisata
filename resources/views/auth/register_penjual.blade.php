@@ -9,6 +9,15 @@
 </head>
 
 <body class="bg-success flex justify-center items-center min-h-screen">
+    @if (session('error'))
+        <div id="alert" class="fixed top-5 right-4 z-50">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
+                role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        </div>
+    @endif
     <div class="bg-white p-8 rounded-2xl shadow-md w-96">
         <h2 class="text-2xl font-bold text-center mb-8">Buat Akun Gratis</h2>
         <div class="flex gap-2 items-center mb-4">
@@ -54,5 +63,17 @@
         </form>
         <p class="px-4 py-2">Sudah punya akun? <a href="/login" class="font-bold text-green-900">Masuk</a></p>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close alert after 2 seconds
+            setTimeout(function() {
+                const alert = document.getElementById('alert');
+                if (alert) {
+                    alert.remove();
+                }
+            }, 5000);
+        });
+    </script>
 </body>
+
 </html>

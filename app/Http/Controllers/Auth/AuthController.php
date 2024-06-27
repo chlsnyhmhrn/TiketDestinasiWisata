@@ -59,7 +59,7 @@ class AuthController extends Controller
             $request->validate([
                 'email' => 'required|email|unique:users,email',
                 'username' => 'required|string|unique:users,username',
-                'full_name' => 'required|string|max:255',
+                //'full_name' => 'required|string|max:255',
                 //'password' => 'required|string|min:8|confirmed',
                 'user_type' => 'required|integer',
             ]);
@@ -84,8 +84,6 @@ class AuthController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
-
-
 
     public function inputDestinasiAction(Request $request)
     {

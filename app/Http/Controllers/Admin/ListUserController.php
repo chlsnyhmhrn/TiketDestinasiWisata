@@ -35,9 +35,9 @@ class ListUserController extends Controller
         return redirect()->route('listPengguna');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $users = User::all();
-        return view('admin/list_pengguna', compact('users'));
+        $user = User::all();
+        return view('admin.list_pengguna', compact('user'));
     }
 }
