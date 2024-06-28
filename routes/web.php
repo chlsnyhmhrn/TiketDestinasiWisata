@@ -86,4 +86,7 @@ Route::prefix('admin')->group(function () {
     Route::get('list_destinasi', [ListDestinasiController::class, 'index'])->name('admin.list_destinasi');
     Route::get('list_tiket', [ListTiketController::class, 'index'])->name('admin.list_tiket');
     Route::get('editakun_admin', [EditAkunAdminController::class, 'index']);
+    Route::get('/admin/destinasi/{id}', [ListDestinasiController::class, 'show'])->name('admin.destinasi.show');
+
+
 });

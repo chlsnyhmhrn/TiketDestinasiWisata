@@ -49,4 +49,11 @@ class ListDestinasiController extends Controller
 
         return redirect()->route('listDestinasi')->with('success', 'Destinasi berhasil ditambahkan');
     }
+    
+    public function show($id)
+    {
+        $destinasi = Destinasi::with('user')->findOrFail($id);
+        return view('admin.detail_destinasi', compact('destinasi'));
+    }
+
 }
