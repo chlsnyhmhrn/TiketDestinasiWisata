@@ -1,56 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
     @vite('resources/css/app.css')
+
+    <script>
+        function submitForm() {
+            document.getElementById('searchForm').submit();
+        }
+    </script>
 </head>
+
 <body style="background-color: #E7ECF1">
     @include('admin.navbar_admin')
     <div class="flex flex-col h-screen md:flex-row bg-gray-100">
         @include('admin.sidebar_admin')
         <div class="w-full bg-white p-8 rounded-2xl shadow-md">
-            <p class="text-3xl font-bold">Akun Pengguna</p>
-            
-            <!-- Search Form -->
-            
-            <div class="flex flex-col mt-5">
-                <form id="searchForm" method="GET" action="{{ route('admin.list_pengguna') }}" class="flex items-center gap-2 mb-2">
-                    <input autocomplete="off" type="text" name="search" placeholder="Cari" class="input input-bordered input-sm w-full bg-gray-100 focus:outline-none focus:border-green-500">
-                    <select name="status" class="select select-sm select-bordered bg-gray-100 focus:outline-none focus:border-green-500" onchange="submitForm()">
-                        <option disabled selected>Status</option>
-                        <option value="Disetujui">Disetujui</option>
-                        <option value="Dibatalkan">Dibatalkan</option>
+            <div class="flex flex-col">
+                <form id="searchForm" method="GET" action="{{ route('admin.list_pengguna') }}"
+                    class="flex items-center gap-2 mb-3">
+                    <a href="" class="btn btn-success btn-sm btn-square text-white"><i class="bi bi-person-add"></i></a>
+                    <input autocomplete="off" type="text" name="cari_user" placeholder="Cari"
+                        value="{{ request()->get('cari_user') }}"
+                        class="input input-bordered input-sm w-full bg-gray-100 focus:outline-none focus:border-green-500">
+
+                    <select name="user_type"
+                        class="select select-sm select-bordered bg-gray-100 focus:outline-none focus:border-green-500"
+                        onchange="submitForm()">
+                        <option disabled {{ !request()->has('user_type') ? 'selected' : '' }}>Status</option>
+                        <option value="">Semua</option>
+                        <option value="admin" {{ request()->get('user_type') == 'admin' ? 'selected' : '' }}>Admin
+                        </option>
+                        <option value="penjual" {{ request()->get('user_type') == 'penjual' ? 'selected' : '' }}>Penjual
+                        </option>
+                        <option value="pembeli" {{ request()->get('user_type') == 'pembeli' ? 'selected' : '' }}>Pembeli
+                        </option>
                     </select>
                 </form>
-                <div class="overflow-x-auto rounded-lg">
+
+                <script>
+                    function submitForm() {
+                        document.getElementById('searchForm').submit();
+                    }
+                </script>
+
+                <div class="overflow-x-auto rounded-lg shadow-md">
                     <div class="align-middle inline-block min-w-full">
                         <div class="shadow overflow-hidden sm:rounded-lg">
-                            <table class="table min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
-                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal dibuat</th>
-                                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe User</th>
+                            <table class="table table-zebra min-w-full divide-y divide-gray-500">
+                                <thead class="bg-success">
+                                    <tr class="text-white">
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-mediu uppercase tracking-wider">
+                                            Username</th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                            Email</th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                            Nama</th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                            Tanggal dibuat</th>
+                                        <th scope="col"
+                                            class="p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                            Tipe User</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white">
                                     @if ($user)
                                         @foreach ($user as $user)
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">{{ $user->username }}</td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">{{ $user->email }}</td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">{{ $user->full_name != null ? $user->full_name : '-' }}</td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">{{ \Carbon\Carbon::parse($user->created_at)->locale('id')->translatedFormat('l, d F Y') }}</td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{{ $user->user_type }}</td>
+                                            <tr class="hover:cursor-pointer hover:bg-gray-200"
+                                                onclick="window.location='{{ route('admin.detail_pengguna', $user->id_user) }}'">
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $user->username }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $user->email }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $user->full_name != null ? $user->full_name : '-' }}</td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                    {{ \Carbon\Carbon::parse($user->created_at)->locale('id')->translatedFormat('d F Y') }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                    {{ $user->user_type }}</td>
+                                            </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="8" class="p-4 text-center text-sm font-normal text-gray-500">Akun tidak tersedia.</td>
+                                            <td colspan="5"
+                                                class="p-4 text-center text-sm font-normal text-gray-500">Akun tidak
+                                                tersedia.</td>
                                         </tr>
                                     @endif
                                 </tbody>
@@ -62,4 +105,5 @@
         </div>
     </div>
 </body>
+
 </html>

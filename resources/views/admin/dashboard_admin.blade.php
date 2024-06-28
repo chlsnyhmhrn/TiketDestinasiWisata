@@ -22,10 +22,7 @@
         <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto">
             <main>
                 <div class="pt-6 px-6">
-                    <div class="flex justify-between items-stretch">
-                        <div class="self-center">
-                            <p class="text-3xl font-bold">Dashboard Admin</p>
-                        </div>
+                    <div class="flex justify-end items-stretch">
                         <div class="self-center flex gap-5">
                             <p class="border h-min py-2 px-3 rounded-md font-semibold border-gray-400">
                                 <i class="bi bi-person mr-1"></i> admin
