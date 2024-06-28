@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\{
     EditAkunAdminController,
     ListDestinasiController,
     ListTiketController,
-    ListUserController
+    PenggunaController
 };
 use App\Http\Controllers\Pembeli\{
     BerandaController,
@@ -80,9 +80,13 @@ Route::prefix('penjual')->middleware('auth')->group(function () {
 });
 
 // Admin
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('list_pengguna', [ListUserController::class, 'list'])->name('admin.list_pengguna');
+    Route::prefix('pengguna')->group(function () {
+        Route::get('', [PenggunaController::class, 'list'])->name('admin.list_pengguna');
+        Route::get('{id_user}', [PenggunaController::class, 'detail'])->name('admin.detail_pengguna');
+        Route::put('update/{id_user}', [PenggunaController::class, 'update'])->name('admin.update_pengguna');
+    });
     Route::get('list_destinasi', [ListDestinasiController::class, 'index'])->name('admin.list_destinasi');
     Route::get('list_tiket', [ListTiketController::class, 'index'])->name('admin.list_tiket');
     Route::get('editakun_admin', [EditAkunAdminController::class, 'index']);

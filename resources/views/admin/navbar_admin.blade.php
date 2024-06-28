@@ -1,9 +1,17 @@
-@if (session('logout'))
+@if (session('success'))
     <div id="alert" class="fixed top-20 right-4 z-50">
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative shadow-md"
             role="alert">
             <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline">{{ session('logout') }}</span>
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    </div>
+@endif
+@if (session('error'))
+    <div id="alert" class="fixed top-20 right-4 z-50">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">{{ session('error') }}</span>
         </div>
     </div>
 @endif
@@ -11,6 +19,13 @@
     <div class="navbar bg-success">
         <div class="navbar-start">
             <a href="/" class="btn btn-ghost text-xl text-white mr-20">WonderWoo</a>
+            @if (Request::routeIs('admin.dashboard'))
+                <p class="text-xl text-white font-semibold">Dashboard</p>
+            @elseif (Request::routeIs('admin.list_pengguna'))
+                <p class="text-xl text-white font-semibold">Akun Pengguna</p>
+            @elseif (Request::routeIs('admin.detail_pengguna'))
+                <p class="text-xl text-white font-semibold">Detail Akun Pengguna</p>
+            @endif
         </div>
         <div class="navbar-end">
             <div class="dropdown dropdown-end">

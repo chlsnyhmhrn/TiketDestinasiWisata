@@ -87,6 +87,6 @@
             if (alert) {
                 alert.remove();
             }
-        }, 5000);
+        }, 3000);
     });
 </script>
