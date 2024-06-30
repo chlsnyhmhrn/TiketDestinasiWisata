@@ -96,15 +96,15 @@
                                     </thead>
                                     <tbody class="bg-white">
                                         <tr class="hover:cursor-pointer hover:bg-gray-200"
-                                            onclick="window.location='{{ route('admin.list_destinasi') }}'">
+                                            onclick="window.location='{{ route('admin.detail_destinasi', $destinasi->id_destinasi) }}'">
                                             <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
                                                 {{ $destinasi->nama_destinasi }}</td>
                                             <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
                                                 Rp. {{ number_format($destinasi->harga, 2, ',', '.') }}</td>
                                             <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                {{ $destinasi->jam_buka }}</td>
+                                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $destinasi->jam_buka)->format('H:i') }}</td>
                                             <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                {{ $destinasi->jam_tutup }}
+                                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $destinasi->jam_tutup)->format('H:i') }}
                                             </td>
                                             <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                                 {{ $destinasi->kategori->nama_kategori }}</td>

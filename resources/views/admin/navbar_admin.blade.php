@@ -18,13 +18,25 @@
 <nav class="sticky top-0 z-50">
     <div class="navbar bg-success">
         <div class="navbar-start">
-            <a href="/" class="btn btn-ghost text-xl text-white mr-20">WonderWoo</a>
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-ghost text-xl text-white mr-20">WonderWoo</a>
             @if (Request::routeIs('admin.dashboard'))
                 <p class="text-xl text-white font-semibold">Dashboard</p>
             @elseif (Request::routeIs('admin.list_pengguna'))
                 <p class="text-xl text-white font-semibold">Akun Pengguna</p>
             @elseif (Request::routeIs('admin.detail_pengguna'))
                 <p class="text-xl text-white font-semibold">Detail Akun Pengguna</p>
+            @elseif (Request::routeIs('admin.list_destinasi'))
+                <p class="text-xl text-white font-semibold">Destinasi</p>
+            @elseif (Request::routeIs('admin.detail_destinasi'))
+                <p class="text-xl text-white font-semibold">Detail Destinasi</p>
+            @elseif (Request::routeIs('admin.tambah_pengguna'))
+                <p class="text-xl text-white font-semibold">Tambah Pengguna</p>
+            @elseif (Request::routeIs('admin.list_tiket'))
+                <p class="text-xl text-white font-semibold">Tiket</p>
+            @elseif (Request::routeIs('admin.detail_tiket'))
+                <p class="text-xl text-white font-semibold">Detail Tiket</p>
+            @elseif (Request::routeIs('admin.tambah_tiket'))
+                <p class="text-xl text-white font-semibold">Tambah Tiket</p>
             @endif
         </div>
         <div class="navbar-end">

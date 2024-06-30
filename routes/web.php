@@ -3,10 +3,11 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\{
     DashboardAdminController,
+    DestinasiController,
     EditAkunAdminController,
-    ListDestinasiController,
     ListTiketController,
-    PenggunaController
+    PenggunaController,
+    TiketController
 };
 use App\Http\Controllers\Pembeli\{
     BerandaController,
@@ -65,8 +66,8 @@ Route::prefix('penjual')->middleware('auth')->group(function () {
     Route::prefix('detail')->group(function () {
         Route::get('edit/{id_destinasi}', [DetailDestinasiController::class, 'editDetailView'])->name('penjual.edit_detail_view');
         Route::get('{id_destinasi}', [DetailDestinasiController::class, 'index'])->name('penjual.detail');
-        Route::put('edit_action/{id_destinasi}', [DetailDestinasiController::class, 'editDetail'])->name('penjual.edit_detail_action');
-        Route::put('edit_status_action/{id_destinasi}', [DetailDestinasiController::class, 'editStatus'])->name('penjual.edit_status_action');
+        Route::put('update/{id_destinasi}', [DetailDestinasiController::class, 'editDetail'])->name('penjual.edit_detail_action');
+        Route::put('update_status/{id_destinasi}', [DetailDestinasiController::class, 'editStatus'])->name('penjual.edit_status_action');
     });
     Route::prefix('orderan_masuk')->group(function () {
         Route::get('{id_destinasi}', [OrderanMasukController::class, 'index'])->name('penjual.orderan_masuk');
@@ -82,15 +83,26 @@ Route::prefix('penjual')->middleware('auth')->group(function () {
 // Admin
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('tambah_pengguna', [PenggunaController::class, 'tambahUser'])->name('admin.tambah_pengguna');
+    Route::post('tambah_pengguna/action', [PenggunaController::class, 'tambahUserAction'])->name('admin.tambah_pengguna_action');
     Route::prefix('pengguna')->group(function () {
         Route::get('', [PenggunaController::class, 'list'])->name('admin.list_pengguna');
         Route::get('{id_user}', [PenggunaController::class, 'detail'])->name('admin.detail_pengguna');
-        Route::put('update/{id_user}', [PenggunaController::class, 'update'])->name('admin.update_pengguna');
+        Route::put('/{id_user}', [PenggunaController::class, 'update'])->name('admin.update_pengguna');
     });
-    Route::get('list_destinasi', [ListDestinasiController::class, 'index'])->name('admin.list_destinasi');
-    Route::get('list_tiket', [ListTiketController::class, 'index'])->name('admin.list_tiket');
+    
+    Route::get('tambah_tiket', [TiketController::class, 'addView'])->name('admin.tambah_tiket');
+    Route::post('tambah_tiket/action', [TiketController::class, 'addAction'])->name('admin.tambah_tiket_action');
+    Route::prefix('tiket')->group(function () {
+        Route::get('', [TiketController::class, 'index'])->name('admin.list_tiket');
+        Route::get('{id_tiket}', [TiketController::class, 'detail'])->name('admin.detail_tiket');
+        Route::put('{id_tiket}', [TiketController::class, 'update'])->name('admin.update_tiket');
+        Route::delete('{id_tiket}', [TiketController::class, 'delete'])->name('admin.delete_tiket');
+    });
+
+    Route::get('list_destinasi', [DestinasiController::class, 'index'])->name('admin.list_destinasi');
     Route::get('editakun_admin', [EditAkunAdminController::class, 'index']);
-    Route::get('/admin/destinasi/{id}', [ListDestinasiController::class, 'show'])->name('admin.destinasi.show');
-
-
+    Route::get('/destinasi/{id}', [DestinasiController::class, 'detailDestinasi'])->name('admin.detail_destinasi');
+    Route::put('/destinasi/edit/{id}', [DestinasiController::class, 'edit'])->name('admin.edit_destinasi');
 });

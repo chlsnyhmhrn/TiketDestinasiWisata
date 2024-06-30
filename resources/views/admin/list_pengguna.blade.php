@@ -23,7 +23,7 @@
             <div class="flex flex-col">
                 <form id="searchForm" method="GET" action="{{ route('admin.list_pengguna') }}"
                     class="flex items-center gap-2 mb-3">
-                    <a href="" class="btn btn-success btn-sm btn-square text-white"><i class="bi bi-person-add"></i></a>
+                    <a href="{{ route('admin.tambah_pengguna') }}" class="btn btn-success btn-sm btn-square text-white"><i class="bi bi-person-add"></i></a>
                     <input autocomplete="off" type="text" name="cari_user" placeholder="Cari"
                         value="{{ request()->get('cari_user') }}"
                         class="input input-bordered input-sm w-full bg-gray-100 focus:outline-none focus:border-green-500">
@@ -41,13 +41,6 @@
                         </option>
                     </select>
                 </form>
-
-                <script>
-                    function submitForm() {
-                        document.getElementById('searchForm').submit();
-                    }
-                </script>
-
                 <div class="overflow-x-auto rounded-lg shadow-md">
                     <div class="align-middle inline-block min-w-full">
                         <div class="shadow overflow-hidden sm:rounded-lg">

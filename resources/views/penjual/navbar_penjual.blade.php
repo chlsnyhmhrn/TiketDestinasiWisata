@@ -10,7 +10,7 @@
 <nav class="sticky top-0 z-50">
     <div class="navbar bg-success">
         <div class="navbar-start">
-            <a href="/" class="btn btn-ghost text-xl text-white mr-20">WonderWoo</a>
+            <a href="{{ route('penjual.dashboard', Auth::user()->id_user) }}" class="btn btn-ghost text-xl text-white mr-20">WonderWoo</a>
             <p class="text-xl text-white font-semibold">{{ $destinasi->nama_destinasi }}</p>
         </div>
         <div class="navbar-end">

@@ -22,16 +22,10 @@
                 <a href="{{ route('admin.list_destinasi') }}" class="ml-4 text-l">Destinasi Wisata</a>
             </div>
         </li>
-        <li class="block px-4 py-2 hover:cursor-pointer hover:bg-stone-700">
+        <li class="block px-4 py-2 hover:cursor-pointer {{ Request::routeIs('admin.list_tiket') ? 'bg-stone-700' : 'hover:bg-stone-700' }}">
             <div class="flex items-center">
                 <i class="bi bi-ticket-detailed-fill text-warning text-xl"></i>
-                <a href="/admin/list_tiket" class="ml-4 text-l">Tiket Wisata</a>
-            </div>
-        </li>
-        <li class="block px-4 py-2 hover:cursor-pointer hover:bg-stone-700">
-            <div class="flex items-center">
-                <i class="bi bi-clock-history text-warning text-xl"></i>
-                <a href="/" class="ml-4 text-l">Riwayat Transaksi</a>
+                <a href="{{ route('admin.list_tiket') }}" class="ml-4 text-l">Tiket Wisata</a>
             </div>
         </li>
     </ul>

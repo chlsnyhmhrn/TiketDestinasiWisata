@@ -33,8 +33,6 @@ class RiwayatPesananController extends Controller
         return view('penjual.riwayat_pesanan', compact('tiket', 'destinasi'));
     }
 
-
-
     public function invoice($id_tiket)
     {
         $tiket = Tiket::where('id_tiket', $id_tiket)->first();
