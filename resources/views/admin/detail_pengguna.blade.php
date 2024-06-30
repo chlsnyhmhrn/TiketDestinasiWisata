@@ -22,6 +22,14 @@
                     class="btn btn-success btn-sm btn-square font-bold text-white rounded-md hover:bg-yellow-30 focus:bg-green-500">
                     <i class="bi bi-floppy"></i>
                 </button>
+                <form id="deleteForm" action="{{ route('admin.delete_pengguna',  $user->id_user) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" id="deleteButton"
+                        class="btn btn-error btn-sm btn-square font-bold text-white rounded-md hover:bg-yellow-30 focus:bg-red-500">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </form>
             </div>
             <div class="mt-3 border border-gray-200 rounded shadow-md p-8">
                 <form id="userForm" method="POST" action="{{ route('admin.update_pengguna', $user->id_user) }}">
@@ -138,6 +146,14 @@
 
         document.getElementById('saveButton').addEventListener('click', function() {
             document.getElementById('userForm').submit();
+        });
+
+        document.getElementById('deleteButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            var confirmation = confirm('Apakah anda yakin ingin menghapus destinasi wisata?');
+            if (confirmation) {
+                document.getElementById('deleteForm').submit();
+            }
         });
     </script>
 </body>

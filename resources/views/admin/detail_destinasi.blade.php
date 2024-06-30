@@ -33,6 +33,14 @@
                     class="btn btn-success btn-sm btn-square font-bold text-white rounded-md hover:bg-yellow-30 focus:bg-green-500">
                     <i class="bi bi-floppy"></i>
                 </button>
+                <form id="deleteForm" action="{{ route('admin.delete_destinasi',  $destinasi->id_destinasi) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" id="deleteButton"
+                        class="btn btn-error btn-sm btn-square font-bold text-white rounded-md hover:bg-yellow-30 focus:bg-red-500">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </form>
             </div>
 
             <!-- Form section for destination details -->
@@ -168,6 +176,14 @@
 
         document.getElementById('saveButton').addEventListener('click', function() {
             document.getElementById('destinasiForm').submit();
+        });
+
+        document.getElementById('deleteButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            var confirmation = confirm('Apakah anda yakin ingin menghapus destinasi wisata?');
+            if (confirmation) {
+                document.getElementById('deleteForm').submit();
+            }
         });
     </script>
 

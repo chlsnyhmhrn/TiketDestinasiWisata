@@ -90,6 +90,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('', [PenggunaController::class, 'list'])->name('admin.list_pengguna');
         Route::get('{id_user}', [PenggunaController::class, 'detail'])->name('admin.detail_pengguna');
         Route::put('/{id_user}', [PenggunaController::class, 'update'])->name('admin.update_pengguna');
+        Route::delete('/{id_user}', [PenggunaController::class, 'delete'])->name('admin.delete_pengguna');
     });
     
     Route::get('tambah_tiket', [TiketController::class, 'addView'])->name('admin.tambah_tiket');
@@ -101,8 +102,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('{id_tiket}', [TiketController::class, 'delete'])->name('admin.delete_tiket');
     });
 
-    Route::get('list_destinasi', [DestinasiController::class, 'index'])->name('admin.list_destinasi');
+    Route::prefix('destinasi')->group(function () {
+        Route::get('', [DestinasiController::class, 'index'])->name('admin.list_destinasi');
+        Route::get('{id}', [DestinasiController::class, 'detailDestinasi'])->name('admin.detail_destinasi');
+        Route::put('{id}', [DestinasiController::class, 'edit'])->name('admin.edit_destinasi');
+        Route::delete('{id}', [DestinasiController::class, 'delete'])->name('admin.delete_destinasi');
+    });
+
     Route::get('editakun_admin', [EditAkunAdminController::class, 'index']);
-    Route::get('/destinasi/{id}', [DestinasiController::class, 'detailDestinasi'])->name('admin.detail_destinasi');
-    Route::put('/destinasi/edit/{id}', [DestinasiController::class, 'edit'])->name('admin.edit_destinasi');
 });

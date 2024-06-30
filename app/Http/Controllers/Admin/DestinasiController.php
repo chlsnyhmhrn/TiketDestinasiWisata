@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Destinasi;
+use App\Models\Favorit;
 use App\Models\Gambar;
 use App\Models\Kategori;
+use App\Models\Tiket;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +21,7 @@ class DestinasiController extends Controller
 
         if ($request->has('cari') && $request->cari != '') {
             $query->where('nama_destinasi', 'like', '%' . $request->cari . '%')
-            ->orWhere('status', '=', $request->cari);
+                ->orWhere('status', '=', $request->cari);
         }
 
         $destinasi = $query->get();
@@ -26,41 +29,6 @@ class DestinasiController extends Controller
         return view('admin.list_destinasi', compact('destinasi'));
     }
 
-    public function create()
-    {
-        $kategori = Kategori::all();
-        return view('admin.input_destinasi', compact('kategori'));
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nama_destinasi' => 'required|string|max:255',
-            'id_kategori' => 'required|integer',
-            'lokasi' => 'required|string|max:255',
-            'harga' => 'required|integer',
-            'deskripsi' => 'required|string',
-            'status' => 'required|string',
-            'jam_buka' => 'required|date_format:H:i',
-            'jam_tutup' => 'required|date_format:H:i',
-            'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $destinasi = new Destinasi();
-        $destinasi->nama_destinasi = $request->nama_destinasi;
-        $destinasi->id_kategori = $request->id_kategori;
-        $destinasi->lokasi = $request->lokasi;
-        $destinasi->harga = $request->harga;
-        $destinasi->deskripsi = $request->deskripsi;
-        $destinasi->status = $request->status;
-        $destinasi->jam_buka = $request->jam_buka;
-        $destinasi->jam_tutup = $request->jam_tutup;
-        $destinasi->save();
-
-        return redirect()->route('listDestinasi')->with('success', 'Destinasi berhasil ditambahkan');
-    }
-    
     public function detailDestinasi($id)
     {
         $destinasi = Destinasi::with('user')->findOrFail($id);
@@ -122,4 +90,35 @@ class DestinasiController extends Controller
         }
     }
 
+    public function delete($id_destinasi)
+    {
+        try {
+            $destinasi = Destinasi::where('id_destinasi', $id_destinasi)->first();
+
+            if (!$destinasi) {
+                return redirect()->back()->with('error', 'Destinasi not found.');
+            }
+
+            $gambar = Gambar::where('id_destinasi', $id_destinasi)->get();
+            foreach ($gambar as $img) {
+                Storage::disk('public')->delete($img->url_gambar);
+                $img->delete();
+            }
+
+            Favorit::where('id_destinasi', $id_destinasi)->delete();
+
+            Tiket::where('id_destinasi', $id_destinasi)->delete();
+
+            $destinasi->delete();
+
+            $user = User::where('id_user', $destinasi->id_user)->first();
+            if ($user) {
+                $user->delete();
+            }
+
+            return redirect()->route('admin.list_destinasi')->with('success', 'Destinasi berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
+        }
+    }
 }

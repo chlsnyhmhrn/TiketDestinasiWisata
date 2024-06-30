@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; // Tambahkan ini
 use App\Models\Destinasi;
+use App\Models\Favorit;
 use App\Models\Gambar;
 use App\Models\Kategori;
+use App\Models\Tiket;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class PenggunaController extends Controller
 {
@@ -141,6 +144,46 @@ class PenggunaController extends Controller
             return redirect()->route('admin.detail_pengguna', $data->id_user)->with('success', 'Akun pengguna berhasil diperbarui');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function delete($id_user)
+    {
+        try {
+            // Fetch the user
+            $user = User::where('id_user', $id_user)->first();
+
+            if (!$user) {
+                return redirect()->back()->with('error', 'User not found.');
+            }
+
+            if ($user->user_type === 'penjual') {
+                $destinasi = Destinasi::where('id_user', $id_user)->first();
+
+                if ($destinasi) {
+                    $gambar = Gambar::where('id_destinasi', $destinasi->id_destinasi)->get();
+                    foreach ($gambar as $img) {
+                        Storage::disk('public')->delete($img->url_gambar);
+                        $img->delete();
+                    }
+
+                    Favorit::where('id_destinasi', $destinasi->id_destinasi)->delete();
+
+                    Tiket::where('id_destinasi', $destinasi->id_destinasi)->delete();
+
+                    $destinasi->delete();
+                }
+            } elseif ($user->user_type === 'pembeli') {
+                Favorit::where('id_user', $id_user)->delete();
+
+                Tiket::where('id_user', $id_user)->delete();
+            }
+
+            $user->delete();
+
+            return redirect()->route('admin.list_pengguna')->with('success', 'Pengguna berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
     }
 }
