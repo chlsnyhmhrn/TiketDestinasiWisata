@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Destinasi</title>
     @vite('resources/css/app.css')
 </head>
 
@@ -80,7 +81,8 @@
                         @else
                             <div class="badge badge-outline badge-error p-3 my-2">{{ $data->status }}</div>
                         @endif
-                        <p class="my-2 font-semibold"><i class="bi bi-geo-alt text-warning mr-1"></i>{{ $data->lokasi }}</p>
+                        <p class="my-2 font-semibold"><i
+                                class="bi bi-geo-alt text-warning mr-1"></i>{{ $data->lokasi }}</p>
                         <p>{!! nl2br(e($data->deskripsi)) !!}</p>
                         <h3 class="text-base font-semibold mt-5">Jam Buka</h3>
                         <p>
@@ -120,8 +122,13 @@
                                 </div>
                             </div>
                             <div class="card-actions mt-3">
-                                <button class="btn w-full bg-success text-white"
-                                    onclick="handlePesanClick()">Pesan</button>
+                                @if ($data->status == 'Tutup')
+                                    <button disabled class="btn w-full bg-success text-white"
+                                        onclick="handlePesanClick()">Pesan</button>
+                                @else
+                                    <button class="btn w-full bg-success text-white"
+                                        onclick="handlePesanClick()">Pesan</button>
+                                @endif
                                 <dialog id="my_modal_3" class="modal">
                                     <div class="modal-box">
                                         <form method="dialog">
@@ -177,8 +184,8 @@
                                                 </div>
                                                 <div>
                                                     <p id="totalHargaText" class="font-semibold"></p>
-                                                    <input id="totalHargaModal" hidden type="number" placeholder="Total"
-                                                        name="total_harga"
+                                                    <input id="totalHargaModal" hidden type="number"
+                                                        placeholder="Total" name="total_harga"
                                                         class="input input-sm input-bordered w-full max-w-xs" />
                                                 </div>
                                             </div>
@@ -196,22 +203,24 @@
     </div>
 
     <div id="alert-login" class="fixed top-20 right-4 z-50 hidden">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md" role="alert">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
+            role="alert">
             <strong class="font-bold">Error!</strong>
             <span class="block sm:inline">Silahkan login terlebih dahulu</span>
         </div>
     </div>
 
     <div id="alert-pesan" class="fixed top-20 right-4 z-50 hidden">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md" role="alert">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-md"
+            role="alert">
             <strong class="font-bold">Error!</strong>
             <span class="block sm:inline">Tanggal Kunjungan & Jumlah Tiket tidak boleh kosong</span>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
                 const alert = document.getElementById('alert');
                 if (alert) {
                     alert.remove();

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Destinasi Wisata</title>
+    <title>Tiket</title>
     @vite('resources/css/app.css')
 
     <script>
@@ -102,7 +102,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="8"
+                                            <td colspan="100%"
                                                 class="p-4 text-center text-sm font-normal text-gray-500">Tiket
                                                 tidak
                                                 tersedia.</td>

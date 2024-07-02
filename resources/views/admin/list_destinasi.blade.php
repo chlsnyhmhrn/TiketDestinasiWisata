@@ -89,7 +89,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5"
+                                            <td colspan="100%"
                                                 class="p-4 text-center text-sm font-normal text-gray-500">Destinasi tidak
                                                 tersedia.</td>
                                         </tr>

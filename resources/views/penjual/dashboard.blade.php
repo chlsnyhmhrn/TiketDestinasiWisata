@@ -104,7 +104,8 @@
                         </div>
                         <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                             <div class="flex justify-end py-2">
-                                <a href="{{ route('penjual.orderan_masuk', $destinasi->id_destinasi) }}" class="text-sm font-medium text-cyan-600">Lihat ></a>
+                                <a href="{{ route('penjual.orderan_masuk', $destinasi->id_destinasi) }}"
+                                    class="text-sm font-medium text-cyan-600">Lihat ></a>
                             </div>
                             <div class="flex items-center">
                                 <div class="flex-shrink-0">
@@ -158,7 +159,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="bg-white">
-                                                    @if ($pesanan_masuk)
+                                                    @if ($pesanan_masuk->count() > 0)
                                                         @foreach ($pesanan_masuk as $item)
                                                             <tr>
                                                                 <td
@@ -181,7 +182,10 @@
                                                             </tr>
                                                         @endforeach
                                                     @else
-                                                        <p>Tidak ada pesanan masuk</p>
+                                                        <td colspan="100%"
+                                                            class="p-4 text-center whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            Riwayat pesanan tidak tersedia.
+                                                        </td>
                                                     @endif
                                                 </tbody>
                                             </table>
@@ -231,7 +235,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="bg-white">
-                                                    @if ($riwayat_pesanan)
+                                                    @if ($riwayat_pesanan->count() > 0)
                                                         @foreach ($riwayat_pesanan as $item)
                                                             <tr>
                                                                 <td
@@ -265,7 +269,12 @@
                                                             </tr>
                                                         @endforeach
                                                     @else
-                                                        <p>Riwayat tidak tersedia</p>
+                                                        <tr>
+                                                            <td colspan="100%"
+                                                                class="p-4 text-center whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                                Riwayat pesanan tidak tersedia.
+                                                            </td>
+                                                        </tr>
                                                     @endif
                                                 </tbody>
                                             </table>

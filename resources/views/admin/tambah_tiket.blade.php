@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Destinasi</title>
+    <title>Tambah Tiket</title>
     <!-- Include CSS styles -->
     @vite('resources/css/app.css')
 </head>

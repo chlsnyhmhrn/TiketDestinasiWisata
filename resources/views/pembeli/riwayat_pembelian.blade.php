@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pembelian</title>
     @vite('resources/css/app.css')
 </head>
 
@@ -21,8 +22,8 @@
     <div class="container mx-auto">
         <div class="content ml-5">
             <div class="mx-auto">
-                <div class="mx-auto max-w-2xl py-10 lg:max-w-none">
-                    <h2 class="text-2xl font-bold text-gray-900 py-4">Riwayat Pembelian</h2>
+                <div class="mx-auto max-w-2xl py-10 lg:max-w-6xl">
+                    <div class="text-2xl font-bold p-1 mt-5">Riwayat Pembelian</div>
                     @foreach ($tiket as $tiket)
                         @php
                             $destinasi = $tiket->destinasi;

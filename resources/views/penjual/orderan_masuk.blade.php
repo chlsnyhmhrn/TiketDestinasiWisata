@@ -49,43 +49,44 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white">
-                                    @if ($tiket)
+                                    @if ($tiket->count() > 0)
                                         @foreach ($tiket as $item)
                                             <tr>
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
                                                     {{ $item->user->full_name }}
                                                 </td>
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
                                                     {{ \Carbon\Carbon::parse($item->tanggal_kunjungan)->locale('id')->translatedFormat('l, d F Y') }}
                                                 </td>
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
                                                     {{ \Carbon\Carbon::parse($item->tanggal_pesanan)->locale('id')->translatedFormat('l, d F Y') }}
                                                 </td>
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                                     {{ $item->total_pesanan }}
                                                 </td>
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                                     Rp.
                                                     {{ number_format($item->total_harga, 2, ',', '.') }}
                                                 </td>
                                                 <td>
                                                     <div class="flex gap-2">
-                                                        <form action="{{ route('penjual.setujui_pesanan', $item->id_tiket) }}" method="POST" style="display:inline;">
+                                                        <form
+                                                            action="{{ route('penjual.setujui_pesanan', $item->id_tiket) }}"
+                                                            method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" class="btn text-white text-xs btn-success btn-sm rounded-md">
+                                                            <button type="submit"
+                                                                class="btn text-white text-xs btn-success btn-sm rounded-md">
                                                                 Setujui
                                                             </button>
                                                         </form>
-                                                        <form action="{{ route('penjual.batalkan_pesanan', $item->id_tiket) }}" method="POST" style="display:inline;">
+                                                        <form
+                                                            action="{{ route('penjual.batalkan_pesanan', $item->id_tiket) }}"
+                                                            method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" class="btn text-white text-xs btn-error btn-sm rounded-md">
+                                                            <button type="submit"
+                                                                class="btn text-white text-xs btn-error btn-sm rounded-md">
                                                                 Batalkan
                                                             </button>
                                                         </form>
@@ -94,7 +95,12 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <p>Belum ada pesanan masuk.</p>
+                                        <tr>
+                                            <td colspan="100%"
+                                                class="p-4 text-center whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                Pesanan tidak tersedia.
+                                            </td>
+                                        </tr>
                                     @endif
                                 </tbody>
                             </table>
